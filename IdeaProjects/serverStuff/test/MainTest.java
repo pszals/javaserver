@@ -1,6 +1,2 @@
 import org.junit.Test;
-
-import java.io.IOException;
-
-import static org.junit.Assert.*;
-
+import static junit.framework.Assert.assertEquals;
