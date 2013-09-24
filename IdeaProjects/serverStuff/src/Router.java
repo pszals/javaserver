@@ -11,8 +11,20 @@ public class Router {
             response = "HTTP/1.1 405 Method not allowed\r\n";
         } else if (method.equals("GET") && route.equals("/text-file.txt")) {
             response = "HTTP/1.1 405 Method not allowed\r\n";
+        } else if (method.equals("options") && route.equals("/method_options")) {
+            response = "HTTP/1.1 200 OK\r\nAllow: GET,HEAD,POST,OPTIONS,PUT";
+        } else if (method.equals("POST") && route.equals("/form")) {
+            response = "HTTP/1.1 200 OK\r\n";
+        } else if (method.equals("PUT") && route.equals("/form")) {
+            response = "HTTP/1.1 200 OK\r\n";
         } else if (method.equals("GET") && route.equals("/method_options")) {
-            response = "HTTP/1.1 200\r\nAllow:  GET,HEAD,POST,OPTIONS,PUT";
+            response = "HTTP/1.1 200 OK\r\nAllow: GET,HEAD,POST,OPTIONS,PUT";
+        } else if (method.equals("POST") && route.equals("/method_options")) {
+            response = "HTTP/1.1 200 OK\r\nAllow: GET,HEAD,POST,OPTIONS,PUT";
+        } else if (method.equals("PUT") && route.equals("/method_options")) {
+            response = "HTTP/1.1 200 OK\r\nAllow: GET,HEAD,POST,OPTIONS,PUT";
+        } else if (route.equals("/method_options")) {
+            response = "HTTP/1.1 200 OK\r\nAllow: GET,HEAD,POST,OPTIONS,PUT";
         }
         else {
             response = "HTTP/1.1 404 Not Found\r\n";
