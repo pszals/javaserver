@@ -4,7 +4,7 @@
     <list default="true" id="cca49707-7597-45cc-924c-a59b4b322b49" name="Default" comment="" />
     <ignored path="serverStuff.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Main.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380058489197" ignored="false" />
+    <file path="/Main.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380133392996" ignored="false" />
     <file path="/HelloWorld.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1379521576537" ignored="false" />
     <file path="/Hello.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1379432711236" ignored="false" />
     <file path="/Dummy.txt" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380040527696" ignored="false" />
@@ -19,10 +19,11 @@
     <file path="/MessageHeadParser.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380040354268" ignored="false" />
     <file path="$PROJECT_DIR$/src/MessageHeadParsers.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1379950627033" ignored="false" />
     <file path="/a.dummy" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1379984361196" ignored="false" />
-    <file path="/RequestParserTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380038851060" ignored="false" />
-    <file path="/RequestParser.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380036783341" ignored="false" />
-    <file path="/RouterTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380055775883" ignored="false" />
-    <file path="/Router.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380055686600" ignored="false" />
+    <file path="/RequestParserTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380132215846" ignored="false" />
+    <file path="/RequestParser.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380134062514" ignored="false" />
+    <file path="/RouterTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380131048355" ignored="false" />
+    <file path="/Router.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380133049099" ignored="false" />
+    <file path="/Server.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380133699022" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +33,10 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/serverStuff$HelloWorldTest.coverage" NAME="HelloWorldTest Coverage Results" MODIFIED="1379521885012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myFlattenPackages" value="true" />
+    <option name="myAutoScrollFromSource" value="true" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -90,7 +95,29 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="1246" selection-end="1246" vertical-scroll-proportion="-14.0">
+            <state line="6" column="0" selection-start="126" selection-end="126" vertical-scroll-proportion="-3.6">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Server.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Server.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="26" selection-start="917" selection-end="917" vertical-scroll-proportion="0.83505154">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/MainTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="50" selection-start="73" selection-end="73" vertical-scroll-proportion="-0.6">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,7 +128,7 @@
       <file leaf-file-name="Router.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Router.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="19" selection-start="1654" selection-end="1654" vertical-scroll-proportion="-15.0">
+            <state line="7" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="-4.2">
               <folding />
             </state>
           </provider>
@@ -110,7 +137,7 @@
       <file leaf-file-name="RouterTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/RouterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="1211" selection-end="1211" vertical-scroll-proportion="-6.8">
+            <state line="20" column="43" selection-start="683" selection-end="683" vertical-scroll-proportion="-12.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,7 +148,7 @@
       <file leaf-file-name="RequestParserTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/RequestParserTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="43" selection-start="2786" selection-end="2786" vertical-scroll-proportion="-22.24">
+            <state line="99" column="41" selection-start="3801" selection-end="3801" vertical-scroll-proportion="-35.4">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -129,10 +156,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestParser.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RequestParser.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RequestParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="0" selection-start="561" selection-end="561" vertical-scroll-proportion="0.6185567">
+            <state line="23" column="0" selection-start="708" selection-end="708" vertical-scroll-proportion="29.8">
               <folding />
             </state>
           </provider>
@@ -165,11 +192,12 @@
         <option value="$PROJECT_DIR$/src/MessageHeadParser/MessageHeadParser.java" />
         <option value="$PROJECT_DIR$/src/MessageHeadParser.java" />
         <option value="$PROJECT_DIR$/test/MessageHeadParserTest.java" />
-        <option value="$PROJECT_DIR$/test/RequestParserTest.java" />
         <option value="$PROJECT_DIR$/test/MainTest.java" />
-        <option value="$PROJECT_DIR$/src/RequestParser.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/test/RouterTest.java" />
+        <option value="$PROJECT_DIR$/test/RequestParserTest.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Server.java" />
+        <option value="$PROJECT_DIR$/src/RequestParser.java" />
         <option value="$PROJECT_DIR$/src/Router.java" />
       </list>
     </option>
@@ -293,7 +321,7 @@
       <recent name="MessageHeadParser" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RouterTest">
+  <component name="RunManager" selected="JUnit.All in ServerStuff">
     <configuration default="false" name="TestHello" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="ServerStuff" />
@@ -589,9 +617,9 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.HelloWorldTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TestHello" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.All in ServerStuff" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.All in ServerStuff" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.HelloWorldTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TestHello" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.Hello" />
       </list>
     </recent_temporary>
@@ -645,17 +673,17 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.6009975" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24892396" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24605452" sideWeight="0.4488778" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3990025" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32917705" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.6708229" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -755,7 +783,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/MainTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="50" selection-start="73" selection-end="73" vertical-scroll-proportion="0.030927835">
+        <state line="1" column="50" selection-start="73" selection-end="73" vertical-scroll-proportion="-0.6">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -764,16 +792,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/RequestParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="43" selection-start="2786" selection-end="2786" vertical-scroll-proportion="-22.24">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1246" selection-end="1246" vertical-scroll-proportion="-14.0">
+        <state line="99" column="41" selection-start="3801" selection-end="3801" vertical-scroll-proportion="-35.4">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -782,24 +801,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/RouterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1211" selection-end="1211" vertical-scroll-proportion="-6.8">
+        <state line="20" column="43" selection-start="683" selection-end="683" vertical-scroll-proportion="-12.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Router.java">
+    <entry file="file://$PROJECT_DIR$/src/RequestParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="19" selection-start="1654" selection-end="1654" vertical-scroll-proportion="-15.0">
+        <state line="23" column="0" selection-start="708" selection-end="708" vertical-scroll-proportion="29.8">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RequestParser.java">
+    <entry file="file://$PROJECT_DIR$/src/Router.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="561" selection-end="561" vertical-scroll-proportion="0.6185567">
+        <state line="7" column="0" selection-start="430" selection-end="430" vertical-scroll-proportion="-4.2">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="126" selection-end="126" vertical-scroll-proportion="-3.6">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="26" selection-start="917" selection-end="917" vertical-scroll-proportion="0.83505154">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

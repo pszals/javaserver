@@ -53,7 +53,7 @@ public class RequestParserTest {
         testMap.put("Connection", "keep-alive");
         requestParser.mapFields(splitRequest);
 
-        assertEquals(testMap, requestParser.getHeaderField());
+        assertEquals(testMap, requestParser.getHeaderFields());
 
 
     }
@@ -74,7 +74,30 @@ public class RequestParserTest {
         assertEquals("GET", requestParser.getHttpMethod());
         assertEquals("/", requestParser.getRoute());
         assertEquals("HTTP/1.1", requestParser.getProtocol());
-        assertEquals("localhost:5000", requestParser.getHeaderField().get("Host"));
+        assertEquals("localhost:5000", requestParser.getHeaderFields().get("Host"));
+    }
+
+    @Test
+    public void testSplitBodyFromHead() {
+        RequestParser requestParser;
+        requestParser = new RequestParser();
+        String request =    "GET / HTTP/1.1\n" +
+                            "Host: localhost:5000\n" +
+                            "Accept-Language: en-US,en;q=0.8\r\n\r\n" +
+                            "data=cosby";
+        requestParser.parseRequest(request);
+        assertEquals("GET / HTTP/1.1\n" +
+                "Host: localhost:5000\n" +
+                "Accept-Language: en-US,en;q=0.8", requestParser.getHead());
+        assertEquals("data = cosby", requestParser.getBody());
+    }
+
+    @Test
+    public void testAddSpacesAroundEqualsSigns() {
+        RequestParser requestParser;
+        requestParser = new RequestParser();
+        String body = "data=cosby";
+        assertEquals("data = cosby", requestParser.addSpacesAroundEqualsSigns(body));
     }
 
 }
