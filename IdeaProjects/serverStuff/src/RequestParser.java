@@ -1,17 +1,44 @@
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.*;
 
 public class RequestParser {
+
     private Map headerFields;
     private String httpMethod;
     private String route;
     private String protocol;
     private String body;
     private String head;
+    private BufferedReader bufferedReader;
+
+    public RequestParser(BufferedReader bufferedReader) {
+        this.bufferedReader = bufferedReader;
+    }
+
+    public String respondToRequest() throws IOException {
+        readHead();
+        String request = getHead();
+        parseRequest(request);
+
+        if (headerFields.containsKey("Content-Length")) {
+            setBody(readBody(Integer.parseInt(headerFields.get("Content-Length").toString())));
+        }
+
+        String route = getRoute();
+        String method = getHttpMethod();
+        String body = getBody();
+        Router router = new Router();
+
+        String outputMessage = router.respondToRouteRequest(method, route, body="");
+
+        return outputMessage;
+    }
 
     public void parseRequest(String request) {
         splitHeadFromBody(request);
         ArrayList<String> splitRequest = splitRequestByLine(head);
-        readHead(splitRequest.get(0));
+        parseHead(splitRequest.get(0));
         splitRequest.remove(0);
         mapFields(splitRequest);
     }
@@ -25,7 +52,7 @@ public class RequestParser {
         }
     }
 
-    public void readHead(String message) {
+    public void parseHead(String message) {
         String[] splitHead = message.split("\\s+");
         Arrays.asList(splitHead);
         setHttpMethod(splitHead[0]);
@@ -48,6 +75,28 @@ public class RequestParser {
 
     public String addSpacesAroundEqualsSigns(String body) {
         return body.replaceAll("=", " = ");
+    }
+
+    public void readHead() throws IOException {
+        String line;
+        String head = "";
+        try {
+                while(!(line = bufferedReader.readLine()).equals("")) {
+                    head += line + "\n";
+                }
+            }
+        catch (IOException e) {
+            System.err.println("Accept failed.");
+            System.exit(1);
+        }
+        setHead(head);
+    }
+
+    public String readBody(int bytesToRead) throws IOException {
+        char[] charArray = new char[bytesToRead];
+        bufferedReader.read(charArray, 0, bytesToRead);
+
+        return String.valueOf(charArray);
     }
 
     public String getHttpMethod() {

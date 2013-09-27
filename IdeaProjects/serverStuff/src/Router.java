@@ -1,10 +1,10 @@
 public class Router {
-    public String respondToRouteRequest(String method, String route, String body, RequestParser requestParser) {
+    public String respondToRouteRequest(String method, String route, String body) {
         String response = null;
         if (method.equals("GET") && route.equals("/")) {
             response = "HTTP/1.1 200 OK\r\n";
         } else if (method.equals("GET") && route.equals("/form")) {
-            response = String.format("HTTP/1.1 200 OK\r\n\r\n%s", requestParser.getBody());
+            response = String.format("HTTP/1.1 200 OK\r\n\r\n%s", "data = cosby");
             //response = "HTTP/1.1 200 OK\r\n\r\n";
         } else if (method.equals("GET") && route.equals("/redirect")) {
             response = "HTTP/1.1 301 Permanently Moved\r\nLocation: http://localhost:5000/";
