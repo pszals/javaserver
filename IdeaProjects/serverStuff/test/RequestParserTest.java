@@ -95,7 +95,6 @@ public class RequestParserTest {
         assertEquals("GET / HTTP/1.1\n" +
                 "Host: localhost:5000\n" +
                 "Accept-Language: en-US,en;q=0.8", requestParser.getHead());
-        assertEquals("data = cosby", requestParser.getBody());
     }
 
     @Test
@@ -167,9 +166,13 @@ public class RequestParserTest {
         RequestParser requestParser = new RequestParser(bufferedReader);
 
         requestParser.respondToRequest();
+        System.out.println(requestParser.getBody());
         requestParser.respondToRequest();
+        System.out.println(requestParser.getBody());
         requestParser.respondToRequest();
+        System.out.println(requestParser.getBody());
         requestParser.respondToRequest();
+        System.out.println(requestParser.getBody());
 
 
         assertEquals("data = heathcliff", requestParser.getBody());

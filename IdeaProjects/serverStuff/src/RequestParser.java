@@ -23,12 +23,16 @@ public class RequestParser {
 
         if (headerFields.containsKey("Content-Length")) {
             setBody(addSpacesAroundEqualsSigns(readBody(Integer.parseInt(headerFields.get("Content-Length").toString()))));
+            System.out.println("setting body");
         }
 
         String route = getRoute();
         String method = getHttpMethod();
         String body = getBody();
         Router router = new Router();
+
+        System.out.println(method);
+        System.out.println(body);
 
         String outputMessage = router.respondToRouteRequest(method, route, body);
 
@@ -46,10 +50,6 @@ public class RequestParser {
     public void splitHeadFromBody(String request) {
         String[] splitMessage = request.split("\r\n\r\n");
         setHead(splitMessage[0]);
-        if (splitMessage.length > 1) {
-            String rawBody = splitMessage[1];
-            setBody(addSpacesAroundEqualsSigns(rawBody));
-        }
     }
 
     public void parseHead(String message) {
