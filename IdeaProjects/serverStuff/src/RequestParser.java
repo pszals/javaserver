@@ -22,7 +22,7 @@ public class RequestParser {
         parseRequest(request);
 
         if (headerFields.containsKey("Content-Length")) {
-            setBody(readBody(Integer.parseInt(headerFields.get("Content-Length").toString())));
+            setBody(addSpacesAroundEqualsSigns(readBody(Integer.parseInt(headerFields.get("Content-Length").toString()))));
         }
 
         String route = getRoute();
@@ -30,7 +30,7 @@ public class RequestParser {
         String body = getBody();
         Router router = new Router();
 
-        String outputMessage = router.respondToRouteRequest(method, route, body="");
+        String outputMessage = router.respondToRouteRequest(method, route, body);
 
         return outputMessage;
     }

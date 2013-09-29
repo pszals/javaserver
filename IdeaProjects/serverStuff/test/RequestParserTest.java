@@ -130,8 +130,7 @@ public class RequestParserTest {
                 "Host: localhost:5000\n" +
                 "Accept-Language: en-US,en;q=0.8\r\n\r\n";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
-        RequestParser requestParser;
-        requestParser = new RequestParser(bufferedReader);
+        RequestParser requestParser = new RequestParser(bufferedReader);
 
         assertEquals("HTTP/1.1 200 OK\r\n", requestParser.respondToRequest());
 
@@ -148,16 +147,31 @@ public class RequestParserTest {
 
     @Test
     public void testHandleHeadWithBody() throws IOException {
-        String message =    "POST / HTTP/1.1\n" +
-                "Host: localhost:5000\n" +
-                "Content-Length: 5\r\n\r\n" +
-                "hello";
+        String message =    "POST /form HTTP/1.1\n" +
+                            "Host: localhost:5000\n" +
+                            "Content-Length: 5\r\n\r\n" +
+                            "hello"     +
+
+                            "GET /form HTTP/1.1\n" +
+                            "Host: localhost:5000\r\n\r\n" +
+
+                            "POST /form HTTP/1.1\n" +
+                            "Host: localhost:5000\n" +
+                            "Content-Length: 15\r\n\r\n" +
+                            "data=heathcliff" +
+
+                            "GET /form HTTP/1.1\n" +
+                            "Host: localhost:5000\r\n\r\n";
+
         BufferedReader bufferedReader = new BufferedReader(new StringReader(message));
-        RequestParser requestParser;
-        requestParser = new RequestParser(bufferedReader);
+        RequestParser requestParser = new RequestParser(bufferedReader);
 
         requestParser.respondToRequest();
+        requestParser.respondToRequest();
+        requestParser.respondToRequest();
+        requestParser.respondToRequest();
 
-        assertEquals("hello", requestParser.getBody());
+
+        assertEquals("data = heathcliff", requestParser.getBody());
     }
 }

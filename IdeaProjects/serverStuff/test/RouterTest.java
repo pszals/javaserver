@@ -19,7 +19,7 @@ public class RouterTest {
 
         method = "GET";
         route = "/form";
-        assertEquals("HTTP/1.1 200 OK\r\n\r\ndata = cosby", router.respondToRouteRequest(method, route, body));
+        assertEquals("HTTP/1.1 200 OK\r\n\r\n", router.respondToRouteRequest(method, route, body));
 
         body = "";
         method = "GET";
@@ -66,5 +66,23 @@ public class RouterTest {
         route = "/form";
         body = "data=cosby";
         assertEquals("HTTP/1.1 200 OK\r\n\r\ndata=cosby", router.respondToRouteRequest(method, route, body));
+
+        method = "PUT";
+        route = "/file1";
+        body = "";
+        assertEquals("HTTP/1.1 405 Method Not Allowed\r\n", router.respondToRouteRequest(method, route, body));
+
+        method = "POST";
+        route = "/text-file.txt";
+        body = "";
+        assertEquals("HTTP/1.1 405 Method Not Allowed\r\n", router.respondToRouteRequest(method, route, body));
     }
+
+    @Test
+    public void testInterpolatingNull() {
+        Router router = new Router();
+        String body = null;
+        String method = "GET";
+        String route = "/form";
+        assertEquals("HTTP/1.1 200 OK\r\n\r\n", router.respondToRouteRequest(method, route, body));    }
 }
