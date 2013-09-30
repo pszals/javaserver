@@ -13,14 +13,14 @@ public class RequestParserTest {
     public void testReadMessageHead() {
         String request = "GET / HTTP/1.1";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
-        RequestParser requestParser;
-        requestParser = new RequestParser(bufferedReader);
+        HashMap state = new HashMap();
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
         requestParser.parseHead(request);
 
         assertEquals("GET", requestParser.getHttpMethod());
 
         BufferedReader newBufferedReader = new BufferedReader(new StringReader(request));
-        requestParser = new RequestParser(newBufferedReader);
+        requestParser = new RequestParser(newBufferedReader, state);
         request = "POST / HTTP/1.1";
         requestParser.parseHead(request);
 
@@ -34,8 +34,8 @@ public class RequestParserTest {
                 "Host: localhost:5000\n" +
                 "Connection: keep-alive\n";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
-        RequestParser requestParser;
-        requestParser = new RequestParser(bufferedReader);
+        HashMap state = new HashMap();
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
         List<String> parsedMessageHead = requestParser.splitRequestByLine(request);
 
         assertEquals("GET / HTTP/1.1", parsedMessageHead.get(0));
@@ -49,8 +49,8 @@ public class RequestParserTest {
                 "Host: localhost:5000\n" +
                 "Connection: keep-alive\n";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
-        RequestParser requestParser;
-        requestParser = new RequestParser(bufferedReader);
+        HashMap state = new HashMap();
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
         ArrayList<String> splitRequest = requestParser.splitRequestByLine(request);
         Map testMap = new HashMap();
         testMap.put("Host", "localhost:5000");
@@ -64,7 +64,6 @@ public class RequestParserTest {
 
     @Test
     public void testParseRequest() {
-        RequestParser requestParser;
         String request =    "GET / HTTP/1.1\n" +
                             "Host: localhost:5000\n" +
                             "Connection: keep-alive\n" +
@@ -74,7 +73,8 @@ public class RequestParserTest {
                             "Accept-Language: en-US,en;q=0.8\n" +
                             "Cookie: textwrapon=false; wysiwyg=textarea";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
-        requestParser = new RequestParser(bufferedReader);
+        HashMap state = new HashMap();
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
         requestParser.parseRequest(request);
         assertEquals("GET", requestParser.getHttpMethod());
         assertEquals("/", requestParser.getRoute());
@@ -89,8 +89,8 @@ public class RequestParserTest {
                             "Accept-Language: en-US,en;q=0.8\r\n\r\n" +
                             "data=cosby";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
-        RequestParser requestParser;
-        requestParser = new RequestParser(bufferedReader);
+        HashMap state = new HashMap();
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
         requestParser.parseRequest(request);
         assertEquals("GET / HTTP/1.1\n" +
                 "Host: localhost:5000\n" +
@@ -99,9 +99,9 @@ public class RequestParserTest {
 
     @Test
     public void testAddSpacesAroundEqualsSigns() {
-        RequestParser requestParser;
         BufferedReader bufferedReader = new BufferedReader(new StringReader(""));
-        requestParser = new RequestParser(bufferedReader);
+        HashMap state = new HashMap();
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
         String body = "data=cosby";
         assertEquals("data = cosby", requestParser.addSpacesAroundEqualsSigns(body));
     }
@@ -113,8 +113,8 @@ public class RequestParserTest {
                             "Accept-Language: en-US,en;q=0.8\r\n\r\n";
 
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
-        RequestParser requestParser;
-        requestParser = new RequestParser(bufferedReader);
+        HashMap state = new HashMap();
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
         requestParser.readHead();
 
         assertEquals(("GET / HTTP/1.1\n" +
@@ -129,9 +129,13 @@ public class RequestParserTest {
                 "Host: localhost:5000\n" +
                 "Accept-Language: en-US,en;q=0.8\r\n\r\n";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
-        RequestParser requestParser = new RequestParser(bufferedReader);
+        HashMap state = new HashMap();
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
 
-        assertEquals("HTTP/1.1 200 OK\r\n", requestParser.respondToRequest());
+        HashMap response = requestParser.respondToRequest();
+        String stringResponse = response.get("message").toString();
+
+        assertEquals("HTTP/1.1 200 OK\r\n", stringResponse);
 
     }
 
@@ -139,42 +143,107 @@ public class RequestParserTest {
     public void testReadBytesFromBufferedReader() throws IOException {
         String request = "This is 16 bytes";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
-        RequestParser requestParser = new RequestParser(bufferedReader);
+        HashMap state = new HashMap();
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
 
         assertEquals("This is 16 bytes", requestParser.readBody(16));
     }
 
+//    @Test
+//    public void testHandleHeadWithBody() throws IOException {
+//        String message1 =    "POST /form HTTP/1.1\n" +
+//                            "Host: localhost:5000\n" +
+//                            "Content-Length: 5\r\n\r\n" +
+//                            "hello";
+//
+//        String message2 =
+//                            "GET /form HTTP/1.1\n" +
+//                            "Host: localhost:5000\r\n\r\n";
+//
+//        String message3 =
+//                            "POST /form HTTP/1.1\n" +
+//                            "Host: localhost:5000\n" +
+//                            "Content-Length: 15\r\n\r\n" +
+//                            "data=heathcliff";
+//
+//        String message4 =
+//                            "GET /form HTTP/1.1\n" +
+//                            "Host: localhost:5000\r\n\r\n";
+//
+//        BufferedReader bufferedReader = new BufferedReader(new StringReader(message1));
+//        HashMap state = new HashMap();
+//        RequestParser requestParser = new RequestParser(bufferedReader, state);
+//
+////        requestParser.respondToRequest();
+////        requestParser.respondToRequest();
+////        requestParser.respondToRequest();
+////        requestParser.respondToRequest();
+//
+//
+////        assertEquals("data = heathcliff", requestParser.getBody());
+//    }
+//
     @Test
-    public void testHandleHeadWithBody() throws IOException {
+    public void testPutsResponseHeaderIntoHashMap() throws IOException {
+        String message =    "GET /form HTTP/1.1\n" +
+                            "Host: localhost:5000\r\n\r\n";
+
+
+        BufferedReader bufferedReader = new BufferedReader(new StringReader(message));
+        HashMap state = new HashMap();
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
+
+        HashMap response = requestParser.respondToRequest();
+
+        Object header = response.get("message");
+        String stringHeader = header.toString();
+
+        assertEquals(stringHeader, "HTTP/1.1 200 OK\r\n\r\n");
+
+    }
+
+    @Test
+    public void testPutsBodyIntoHashMap() throws IOException {
         String message =    "POST /form HTTP/1.1\n" +
                             "Host: localhost:5000\n" +
                             "Content-Length: 5\r\n\r\n" +
-                            "hello"     +
+                            "hello";
 
-                            "GET /form HTTP/1.1\n" +
-                            "Host: localhost:5000\r\n\r\n" +
-
-                            "POST /form HTTP/1.1\n" +
-                            "Host: localhost:5000\n" +
-                            "Content-Length: 15\r\n\r\n" +
-                            "data=heathcliff" +
-
-                            "GET /form HTTP/1.1\n" +
-                            "Host: localhost:5000\r\n\r\n";
 
         BufferedReader bufferedReader = new BufferedReader(new StringReader(message));
-        RequestParser requestParser = new RequestParser(bufferedReader);
+        HashMap state = new HashMap();
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
+
+        HashMap response = requestParser.respondToRequest();
+
+        Object header = response.get("message");
+        String stringHeader = header.toString();
+
+        HashMap stateObject = (HashMap) response.get("state");
+        Object nestedBody = stateObject.get("state");
+
+        String stringBody = nestedBody.toString();
+
+        assertEquals("HTTP/1.1 200 OK\r\n", stringHeader);
+        assertEquals("hello", stringBody);
+
+
+    }
+
+    @Test
+    public void testPutsBodyFromStateIntoBodyVariable() throws IOException {
+        String message =    "GET /form HTTP/1.1\n" +
+                            "Host: localhost:5000\r\n\r\n";
+
+
+        BufferedReader bufferedReader = new BufferedReader(new StringReader(message));
+        HashMap state = new HashMap();
+        state.put("state", "hello");
+
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
 
         requestParser.respondToRequest();
-        System.out.println(requestParser.getBody());
-        requestParser.respondToRequest();
-        System.out.println(requestParser.getBody());
-        requestParser.respondToRequest();
-        System.out.println(requestParser.getBody());
-        requestParser.respondToRequest();
-        System.out.println(requestParser.getBody());
 
-
-        assertEquals("data = heathcliff", requestParser.getBody());
+        assertEquals("hello", requestParser.getBody());
     }
 }

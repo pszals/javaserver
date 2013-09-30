@@ -5,6 +5,7 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.Charset;
+import java.util.HashMap;
 
 public class Server {
 
@@ -18,15 +19,21 @@ public class Server {
             System.exit(1);
         }
 
+        HashMap state = null;
         Socket clientSocket = null;
         try {
             while (true) {
                 clientSocket = serverSocket.accept();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-                RequestParser requestParser = new RequestParser(reader);
+                RequestParser requestParser = new RequestParser(reader, state);
 
-                String outputMessage = requestParser.respondToRequest();
+                HashMap response = requestParser.respondToRequest();
+
+                HashMap newState = (HashMap) response.get("state");
+                state = newState;
+
+                String outputMessage = response.get("message").toString();
 
                 OutputStream out = clientSocket.getOutputStream();
                 out.write(outputMessage.getBytes(Charset.forName("utf-8")));

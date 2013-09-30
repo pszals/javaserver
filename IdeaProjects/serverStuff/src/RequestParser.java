@@ -4,6 +4,7 @@ import java.util.*;
 
 public class RequestParser {
 
+    private final HashMap state;
     private Map headerFields;
     private String httpMethod;
     private String route;
@@ -12,18 +13,22 @@ public class RequestParser {
     private String head;
     private BufferedReader bufferedReader;
 
-    public RequestParser(BufferedReader bufferedReader) {
+    public RequestParser(BufferedReader bufferedReader, HashMap state) {
         this.bufferedReader = bufferedReader;
+        this.state = state;
     }
 
-    public String respondToRequest() throws IOException {
+    public HashMap respondToRequest() throws IOException {
         readHead();
         String request = getHead();
         parseRequest(request);
 
+        if ((getState() != null) && (getState().get("state") != null)) {
+            setBody(getState().get("state").toString());
+        }
+
         if (headerFields.containsKey("Content-Length")) {
             setBody(addSpacesAroundEqualsSigns(readBody(Integer.parseInt(headerFields.get("Content-Length").toString()))));
-            System.out.println("setting body");
         }
 
         String route = getRoute();
@@ -31,12 +36,14 @@ public class RequestParser {
         String body = getBody();
         Router router = new Router();
 
-        System.out.println(method);
-        System.out.println(body);
-
         String outputMessage = router.respondToRouteRequest(method, route, body);
+        HashMap state = new HashMap();
+        state.put("state", body);
+        HashMap output = new HashMap();
+        output.put("message", outputMessage);
+        output.put("state", state);
 
-        return outputMessage;
+        return output;
     }
 
     public void parseRequest(String request) {
@@ -145,5 +152,9 @@ public class RequestParser {
 
     public String getHead() {
         return head;
+    }
+
+    public HashMap getState() {
+        return state;
     }
 }
