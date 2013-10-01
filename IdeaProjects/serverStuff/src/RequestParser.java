@@ -9,7 +9,7 @@ public class RequestParser {
     private String httpMethod;
     private String route;
     private String protocol;
-    private String body;
+    private byte[] body;
     private String head;
     private BufferedReader bufferedReader;
 
@@ -24,19 +24,19 @@ public class RequestParser {
         parseRequest(request);
 
         if ((getState() != null) && (getState().get("state") != null)) {
-            setBody(getState().get("state").toString());
+            setBody((byte[]) getState().get("state"));
         }
 
         if (headerFields.containsKey("Content-Length")) {
-            setBody(addSpacesAroundEqualsSigns(readBody(Integer.parseInt(headerFields.get("Content-Length").toString()))));
+            setBody((addSpacesAroundEqualsSigns(readBody(Integer.parseInt(headerFields.get("Content-Length").toString())))).getBytes());
         }
 
         String route = getRoute();
         String method = getHttpMethod();
-        String body = getBody();
+        byte[] body = getBody();
         Router router = new Router();
 
-        String outputMessage = router.respondToRouteRequest(method, route, body);
+        byte[] outputMessage = router.respondToRouteRequest(method, route, body);
         HashMap state = new HashMap();
         state.put("state", body);
         HashMap output = new HashMap();
@@ -138,11 +138,11 @@ public class RequestParser {
         this.headerFields = headerFields;
     }
 
-    public String getBody() {
+    public byte[] getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(byte[] body) {
         this.body = body;
     }
 

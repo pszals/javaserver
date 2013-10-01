@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
 
 public class RequestParserTest {
     @Test
@@ -133,9 +134,9 @@ public class RequestParserTest {
         RequestParser requestParser = new RequestParser(bufferedReader, state);
 
         HashMap response = requestParser.respondToRequest();
-        String stringResponse = response.get("message").toString();
+        byte[] byteResponse = (byte[]) response.get("message");
 
-        assertEquals("HTTP/1.1 200 OK\r\n", stringResponse);
+        assertArrayEquals("HTTP/1.1 200 OK\r\n".getBytes(), byteResponse);
 
     }
 
@@ -149,40 +150,6 @@ public class RequestParserTest {
         assertEquals("This is 16 bytes", requestParser.readBody(16));
     }
 
-//    @Test
-//    public void testHandleHeadWithBody() throws IOException {
-//        String message1 =    "POST /form HTTP/1.1\n" +
-//                            "Host: localhost:5000\n" +
-//                            "Content-Length: 5\r\n\r\n" +
-//                            "hello";
-//
-//        String message2 =
-//                            "GET /form HTTP/1.1\n" +
-//                            "Host: localhost:5000\r\n\r\n";
-//
-//        String message3 =
-//                            "POST /form HTTP/1.1\n" +
-//                            "Host: localhost:5000\n" +
-//                            "Content-Length: 15\r\n\r\n" +
-//                            "data=heathcliff";
-//
-//        String message4 =
-//                            "GET /form HTTP/1.1\n" +
-//                            "Host: localhost:5000\r\n\r\n";
-//
-//        BufferedReader bufferedReader = new BufferedReader(new StringReader(message1));
-//        HashMap state = new HashMap();
-//        RequestParser requestParser = new RequestParser(bufferedReader, state);
-//
-////        requestParser.respondToRequest();
-////        requestParser.respondToRequest();
-////        requestParser.respondToRequest();
-////        requestParser.respondToRequest();
-//
-//
-////        assertEquals("data = heathcliff", requestParser.getBody());
-//    }
-//
     @Test
     public void testPutsResponseHeaderIntoHashMap() throws IOException {
         String message =    "GET /form HTTP/1.1\n" +
@@ -196,9 +163,8 @@ public class RequestParserTest {
         HashMap response = requestParser.respondToRequest();
 
         Object header = response.get("message");
-        String stringHeader = header.toString();
 
-        assertEquals(stringHeader, "HTTP/1.1 200 OK\r\n\r\n");
+        assertArrayEquals("HTTP/1.1 200 OK\r\n\r\n".getBytes(), (byte[]) header);
 
     }
 
@@ -216,16 +182,10 @@ public class RequestParserTest {
 
         HashMap response = requestParser.respondToRequest();
 
-        Object header = response.get("message");
-        String stringHeader = header.toString();
-
         HashMap stateObject = (HashMap) response.get("state");
-        Object nestedBody = stateObject.get("state");
+        byte[] nestedBody = (byte[]) stateObject.get("state");
 
-        String stringBody = nestedBody.toString();
-
-        assertEquals("HTTP/1.1 200 OK\r\n", stringHeader);
-        assertEquals("hello", stringBody);
+        assertArrayEquals("hello".getBytes(), nestedBody);
 
 
     }
@@ -244,6 +204,6 @@ public class RequestParserTest {
 
         requestParser.respondToRequest();
 
-        assertEquals("hello", requestParser.getBody());
+        assertArrayEquals("hello".getBytes(), requestParser.getBody());
     }
 }

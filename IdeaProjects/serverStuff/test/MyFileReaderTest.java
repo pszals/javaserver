@@ -12,22 +12,41 @@ public class MyFileReaderTest {
         RandomAccessFile f = new RandomAccessFile(testFile, "r");
         byte[] b = new byte[(int)f.length()];
 
-        f.read(b);
+//        f.read(b);
 
-        String newB = new String(b);
+//        String newB = new String(b);
 
-        String fileName = "file1.txt";
+        String fileName = "/file1.txt";
         MyFileReader myFileReader = new MyFileReader(fileName);
-        String fileContents = myFileReader.readTextFileContents();
+        byte[] fileContents = myFileReader.readTextFileContents();
 
-        assertEquals("test\n", fileContents);
+        assertEquals("test\n", new String(fileContents));
     }
 
     @Test
-    public void testConvertsGiveFileNameToWholePath() {
-        String myFile = "file1.txt";
+    public void testConvertsGivenFileNameToWholePath() {
+        String myFile = "/file1.txt";
         MyFileReader myFileReader = new MyFileReader(myFile);
         String path = "/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/cob_spec/public/file1.txt";
         assertEquals(path, myFileReader.getPath());
     }
+
+    @Test
+    public void testReadsImageInBytesFromFile() throws IOException {
+
+        File testFile = new File("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/cob_spec/public/image.png");
+        RandomAccessFile f = new RandomAccessFile(testFile, "r");
+        byte[] b = new byte[(int)f.length()];
+
+        f.read(b);
+
+        String newB = new String(b);
+
+        String fileName = "image.png";
+        MyFileReader myFileReader = new MyFileReader(fileName);
+//        String fileContents = myFileReader.readTextFileContents();
+//
+//        assertEquals(newB, fileContents);
+    }
+
 }

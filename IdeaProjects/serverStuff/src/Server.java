@@ -4,7 +4,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.charset.Charset;
 import java.util.HashMap;
 
 public class Server {
@@ -33,10 +32,11 @@ public class Server {
                 HashMap newState = (HashMap) response.get("state");
                 state = newState;
 
-                String outputMessage = response.get("message").toString();
+                byte[] outputMessage = (byte[]) response.get("message");
 
                 OutputStream out = clientSocket.getOutputStream();
-                out.write(outputMessage.getBytes(Charset.forName("utf-8")));
+                out.write(outputMessage);
+
                 out.close();
             }
         } catch (IOException e) {
