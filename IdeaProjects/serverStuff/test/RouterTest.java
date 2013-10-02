@@ -1,6 +1,7 @@
 import org.junit.Test;
 import java.io.IOException;
 
+import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 
 public class RouterTest {
@@ -83,6 +84,10 @@ public class RouterTest {
         body = "".getBytes();
         assertArrayEquals("HTTP/1.1 206 Partial Content\r\n\r\nThis".getBytes(), router.respondToRouteRequest(method, route, body));
 
+        method = "GET";
+        route = "/parameters";
+        body = "".getBytes();
+        assertEquals("HTTP/1.1 200 OK\r\n\r\n", new String(router.respondToRouteRequest(method, route, body)));
     }
 
     @Test

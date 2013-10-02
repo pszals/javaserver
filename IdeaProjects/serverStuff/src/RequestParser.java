@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 public class RequestParser {
@@ -47,7 +48,7 @@ public class RequestParser {
         return output;
     }
 
-    public void parseRequest(String request) {
+    public void parseRequest(String request) throws UnsupportedEncodingException {
         splitHeadFromBody(request);
         ArrayList<String> splitRequest = splitRequestByLine(head);
         parseHead(splitRequest.get(0));
@@ -60,12 +61,11 @@ public class RequestParser {
         setHead(splitMessage[0]);
     }
 
-    public void parseHead(String message) {
+    public void parseHead(String message) throws UnsupportedEncodingException {
         String[] splitHead = message.split("\\s+");
         Arrays.asList(splitHead);
         setHttpMethod(splitHead[0]);
-// parseRoute(splitHead[1])
-        setRoute(splitHead[1]);
+        parseRoute(splitHead[1]);
         setProtocol(splitHead[2]);
     }
 
@@ -106,6 +106,20 @@ public class RequestParser {
         bufferedReader.read(charArray, 0, bytesToRead);
 
         return String.valueOf(charArray);
+    }
+
+    public void parseRoute(String route) throws UnsupportedEncodingException {
+        String[] splittedRoute = route.split("\\?");
+        setRoute(splittedRoute[0]);
+        if (splittedRoute.length > 1) {
+            setQueryString(splittedRoute[1]);
+            parseQueryString(getQueryString());
+        }
+    }
+
+    public void parseQueryString(String queryString) throws UnsupportedEncodingException {
+        QueryStringParser queryStringParser = new QueryStringParser();
+        setBody(queryStringParser.queryStringToSymbolString(queryString).getBytes());
     }
 
     public String getHttpMethod() {
@@ -160,22 +174,11 @@ public class RequestParser {
         return state;
     }
 
-    public void parseRoute(String route) {
-        String[] splittedRoute = route.split("\\?");
-        setRoute(splittedRoute[0]);
-        setQueryString(splittedRoute[1]);
-    }
-
     public void setQueryString(String queryString) {
         this.queryString = queryString;
     }
 
     public String getQueryString() {
         return queryString;
-    }
-
-    public void parseQueryString(String queryString) {
-        QueryStringParser queryStringParser = new QueryStringParser();
-        setBody(queryStringParser.queryStringToSymbolString(queryString).getBytes());
     }
 }

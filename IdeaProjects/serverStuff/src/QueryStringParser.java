@@ -1,3 +1,6 @@
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 public class QueryStringParser {
 
     public String[] splitStringBetweenPercents(String string) {
@@ -19,19 +22,26 @@ public class QueryStringParser {
                 newHexCodes[i] = convertHexStringToASCII(newHexCodes[i]);
             } else if(newHexCodes[i].length() != 2) {
                 newHexCodes[i] = newHexCodes[i].replaceAll("=", " = ");
+                newHexCodes[i] = newHexCodes[i].replaceAll("&", " ");
             }
         }
         return newHexCodes;
     }
 
-    public String queryStringToSymbolString(String queryString) {
-        String[] splittedString = splitStringBetweenPercents(queryString);
-        String[] hexCodes = convertHexArrayToStringArray(splittedString);
+    public String queryStringToSymbolString(String queryString) throws UnsupportedEncodingException {
 
-        StringBuilder builder = new StringBuilder();
-        for(String s : hexCodes) {
-            builder.append(s);
-        }
-        return builder.toString();
+        URLDecoder urlDecoder = new URLDecoder();
+
+        String result = urlDecoder.decode(queryString, "UTF-8");
+
+        return result.replaceAll("=", " = ");
+//        String[] splittedString = splitStringBetweenPercents(queryString);
+//        String[] hexCodes = convertHexArrayToStringArray(splittedString);
+//
+//        StringBuilder builder = new StringBuilder();
+//        for(String s : hexCodes) {
+//            builder.append(s);
+//        }
+//        return builder.toString();
     }
 }

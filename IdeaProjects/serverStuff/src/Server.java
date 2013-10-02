@@ -29,8 +29,7 @@ public class Server {
 
                 HashMap response = requestParser.respondToRequest();
 
-                HashMap newState = (HashMap) response.get("state");
-                state = newState;
+                state = (HashMap) response.get("state");
 
                 byte[] outputMessage = (byte[]) response.get("message");
 

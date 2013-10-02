@@ -11,7 +11,7 @@ import static org.junit.Assert.assertArrayEquals;
 
 public class RequestParserTest {
     @Test
-    public void testReadMessageHead() {
+    public void testReadMessageHead() throws UnsupportedEncodingException {
         String request = "GET / HTTP/1.1";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
         HashMap state = new HashMap();
@@ -64,7 +64,7 @@ public class RequestParserTest {
     }
 
     @Test
-    public void testParseRequest() {
+    public void testParseRequest() throws UnsupportedEncodingException {
         String request =    "GET / HTTP/1.1\n" +
                             "Host: localhost:5000\n" +
                             "Connection: keep-alive\n" +
@@ -84,7 +84,7 @@ public class RequestParserTest {
     }
 
     @Test
-    public void testSplitBodyFromHead() {
+    public void testSplitBodyFromHead() throws UnsupportedEncodingException {
         String request =    "GET / HTTP/1.1\n" +
                             "Host: localhost:5000\n" +
                             "Accept-Language: en-US,en;q=0.8\r\n\r\n" +
@@ -210,7 +210,7 @@ public class RequestParserTest {
 
     @Test
     public void testParsesQueryString() throws IOException {
-        String request = "GET /parameters?variable_1=Operators%20 HTTP/1.1";
+        String request = "GET /parameters?variable_1=Operators%20%3C HTTP/1.1";
         HashMap state = null;
 
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
@@ -225,5 +225,18 @@ public class RequestParserTest {
 
         assertEquals("variable_1 = Operators <", new String(requestParser.getBody()));
 
+    }
+
+    @Test
+    public void testRespondsCorrectlyToQueryString() throws IOException {
+        String request = "GET /parameters?variable_1=Operators%20%3C HTTP/1.1\r\n\r\n";
+        HashMap state = null;
+
+        BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
+
+        requestParser.respondToRequest();
+
+        assertEquals("variable_1 = Operators <", new String(requestParser.getBody()));
     }
 }

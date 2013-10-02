@@ -1,6 +1,9 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 
@@ -44,15 +47,22 @@ public class QueryStringParserTest {
     }
 
     @Test
-    public void convertsQueryStringIntoSymbolString(){
+    public void convertsQueryStringIntoSymbolString() throws UnsupportedEncodingException {
         QueryStringParser queryStringParser = new QueryStringParser();
-        String queryString = "20%3C";
+        String queryString = "%20%3C";
 
         assertEquals(" <", queryStringParser.queryStringToSymbolString(queryString));
 
         String realQueryString = "variable_1=Operators%20%3C";
 
         assertEquals("variable_1 = Operators <", queryStringParser.queryStringToSymbolString(realQueryString));
+
+        URLDecoder urlDecoder = new URLDecoder();
+
+        String result = urlDecoder.decode(queryString, "UTF-8");
+
+        Assert.assertEquals(" <", result);
+
 
     }
 

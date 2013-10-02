@@ -97,6 +97,11 @@ public class Router {
 
             response = responseBuilder.addTwoByteArrays(message, fileContents);
 
+        } else if (method.equals("GET") && route.equals("/parameters")) {
+            byte[] message = "HTTP/1.1 200 OK\r\n\r\n".getBytes();
+            System.out.println(new String(body));
+            response = responseBuilder.addTwoByteArrays(message, body);
+
         } else {
             response = "HTTP/1.1 404 Not Found\r\n".getBytes();
         }
