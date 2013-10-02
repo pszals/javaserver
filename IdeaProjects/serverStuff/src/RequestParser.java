@@ -12,6 +12,7 @@ public class RequestParser {
     private byte[] body;
     private String head;
     private BufferedReader bufferedReader;
+    private String queryString;
 
     public RequestParser(BufferedReader bufferedReader, HashMap state) {
         this.bufferedReader = bufferedReader;
@@ -63,6 +64,7 @@ public class RequestParser {
         String[] splitHead = message.split("\\s+");
         Arrays.asList(splitHead);
         setHttpMethod(splitHead[0]);
+// parseRoute(splitHead[1])
         setRoute(splitHead[1]);
         setProtocol(splitHead[2]);
     }
@@ -156,5 +158,24 @@ public class RequestParser {
 
     public HashMap getState() {
         return state;
+    }
+
+    public void parseRoute(String route) {
+        String[] splittedRoute = route.split("\\?");
+        setRoute(splittedRoute[0]);
+        setQueryString(splittedRoute[1]);
+    }
+
+    public void setQueryString(String queryString) {
+        this.queryString = queryString;
+    }
+
+    public String getQueryString() {
+        return queryString;
+    }
+
+    public void parseQueryString(String queryString) {
+        QueryStringParser queryStringParser = new QueryStringParser();
+        setBody(queryStringParser.queryStringToSymbolString(queryString).getBytes());
     }
 }

@@ -1,13 +1,7 @@
-import org.junit.Assert;
 import org.junit.Test;
-import java.io.File;
 import java.io.IOException;
 
-import static junit.framework.Assert.assertEquals;
-import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 public class RouterTest {
     @Test
@@ -17,7 +11,8 @@ public class RouterTest {
         byte[] body = "".getBytes();
         String method = "GET";
         String route = "/";
-        assertArrayEquals("HTTP/1.1 200 OK\r\n".getBytes(), router.respondToRouteRequest(method, route, body));
+        assertArrayEquals("HTTP/1.1 200 OK\r\n\r\n<a href='file1'>file1</a><a href='file2'>file2</a><a href='image.gif'>image.gif</a><a href='image.jpeg'>image.jpeg</a><a href='image.png'>image.png</a><a href='text-file.txt'>text-file.txt</a><a href='partial_content.txt'>partial_content.txt</a>".
+                getBytes(), router.respondToRouteRequest(method, route, body));
 
         body = "".getBytes();
         method = "GET";
@@ -86,7 +81,7 @@ public class RouterTest {
         method = "GET";
         route = "/partial_content.txt";
         body = "".getBytes();
-        assertArrayEquals("HTTP/1.1 206 Partial Content\r\nThis is a file that contains text to read part of in order to fulfill a 206.".getBytes(), router.respondToRouteRequest(method, route, body));
+        assertArrayEquals("HTTP/1.1 206 Partial Content\r\n\r\nThis".getBytes(), router.respondToRouteRequest(method, route, body));
 
     }
 

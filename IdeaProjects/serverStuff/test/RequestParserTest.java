@@ -126,9 +126,9 @@ public class RequestParserTest {
 
     @Test
     public void testHandleRequest() throws IOException {
-        String request =    "GET / HTTP/1.1\n" +
-                "Host: localhost:5000\n" +
-                "Accept-Language: en-US,en;q=0.8\r\n\r\n";
+        String request =     "GET / HTTP/1.1\n" +
+                             "Host: localhost:5000\n" +
+                             "Accept-Language: en-US,en;q=0.8\r\n\r\n";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
         HashMap state = new HashMap();
         RequestParser requestParser = new RequestParser(bufferedReader, state);
@@ -136,7 +136,8 @@ public class RequestParserTest {
         HashMap response = requestParser.respondToRequest();
         byte[] byteResponse = (byte[]) response.get("message");
 
-        assertArrayEquals("HTTP/1.1 200 OK\r\n".getBytes(), byteResponse);
+        assertArrayEquals("HTTP/1.1 200 OK\r\n\r\n<a href='file1'>file1</a><a href='file2'>file2</a><a href='image.gif'>image.gif</a><a href='image.jpeg'>image.jpeg</a><a href='image.png'>image.png</a><a href='text-file.txt'>text-file.txt</a><a href='partial_content.txt'>partial_content.txt</a>".
+                getBytes(), byteResponse);
 
     }
 
@@ -198,12 +199,31 @@ public class RequestParserTest {
 
         BufferedReader bufferedReader = new BufferedReader(new StringReader(message));
         HashMap state = new HashMap();
-        state.put("state", "hello");
+        state.put("state", "hello".getBytes());
 
         RequestParser requestParser = new RequestParser(bufferedReader, state);
 
         requestParser.respondToRequest();
 
         assertArrayEquals("hello".getBytes(), requestParser.getBody());
+    }
+
+    @Test
+    public void testParsesQueryString() throws IOException {
+        String request = "GET /parameters?variable_1=Operators%20 HTTP/1.1";
+        HashMap state = null;
+
+        BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
+
+        requestParser.parseRoute("/parameters?variable_1=Operators%20%3C");
+
+        assertEquals("/parameters", requestParser.getRoute());
+        assertEquals("variable_1=Operators%20%3C", requestParser.getQueryString());
+
+        requestParser.parseQueryString(requestParser.getQueryString());
+
+        assertEquals("variable_1 = Operators <", new String(requestParser.getBody()));
+
     }
 }

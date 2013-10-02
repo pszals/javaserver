@@ -11,7 +11,7 @@ public class MyFileReader {
         this.path = "/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/cob_spec/public" + fileName;
     }
 
-    public byte[] readTextFileContents() throws IOException {
+    public byte[] readFileContents() throws IOException {
         File thisFile = new File(path);
         RandomAccessFile file = new RandomAccessFile(thisFile, "r");
         byte[] fileToBytes = new byte[(int)file.length()];

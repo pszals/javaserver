@@ -3,31 +3,28 @@ import org.junit.Test;
 import java.io.*;
 
 import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
 
 public class MyFileReaderTest {
     @Test
     public void testReadsTextFromFile() throws IOException {
 
-        File testFile = new File("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/cob_spec/public/file1.txt");
+        File testFile = new File("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/cob_spec/public/file1");
         RandomAccessFile f = new RandomAccessFile(testFile, "r");
         byte[] b = new byte[(int)f.length()];
 
-//        f.read(b);
-
-//        String newB = new String(b);
-
-        String fileName = "/file1.txt";
+        String fileName = "/file1";
         MyFileReader myFileReader = new MyFileReader(fileName);
-        byte[] fileContents = myFileReader.readTextFileContents();
+        byte[] fileContents = myFileReader.readFileContents();
 
-        assertEquals("test\n", new String(fileContents));
+        assertEquals("file1 contents\n", new String(fileContents));
     }
 
     @Test
     public void testConvertsGivenFileNameToWholePath() {
-        String myFile = "/file1.txt";
+        String myFile = "/file1";
         MyFileReader myFileReader = new MyFileReader(myFile);
-        String path = "/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/cob_spec/public/file1.txt";
+        String path = "/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/cob_spec/public/file1";
         assertEquals(path, myFileReader.getPath());
     }
 
@@ -40,13 +37,11 @@ public class MyFileReaderTest {
 
         f.read(b);
 
-        String newB = new String(b);
-
-        String fileName = "image.png";
+        String fileName = "/image.png";
         MyFileReader myFileReader = new MyFileReader(fileName);
-//        String fileContents = myFileReader.readTextFileContents();
-//
-//        assertEquals(newB, fileContents);
+        byte[] fileContents = myFileReader.readFileContents();
+
+        assertArrayEquals(b, fileContents);
     }
 
 }
