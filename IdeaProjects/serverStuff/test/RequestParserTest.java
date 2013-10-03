@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.*;
@@ -10,6 +11,7 @@ import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 
 public class RequestParserTest {
+
     @Test
     public void testReadMessageHead() throws UnsupportedEncodingException {
         String request = "GET / HTTP/1.1";
@@ -239,4 +241,23 @@ public class RequestParserTest {
 
         assertEquals("variable_1 = Operators <", new String(requestParser.getBody()));
     }
+
+    @Test
+    public void testHandlesAuthentication() throws IOException {
+        String message =    "GET /logs HTTP/1.1\n" +
+                            "Authorization: Basic YWRtaW46aHVudGVyMg==\r\n\r\n";
+
+
+        BufferedReader bufferedReader = new BufferedReader(new StringReader(message));
+        HashMap state = new HashMap();
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
+
+        HashMap response = requestParser.respondToRequest();
+
+        Object header = response.get("message");
+        Object credentials = response.get("Authorization");
+
+        assertEquals("HTTP/1.1 401\r\n\r\nAuthentication required", new String((byte[]) header));
+        assertEquals("Basic YWRtaW46aHVudGVyMg==", credentials);
+        }
 }

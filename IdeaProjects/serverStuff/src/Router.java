@@ -99,8 +99,11 @@ public class Router {
 
         } else if (method.equals("GET") && route.equals("/parameters")) {
             byte[] message = "HTTP/1.1 200 OK\r\n\r\n".getBytes();
-            System.out.println(new String(body));
             response = responseBuilder.addTwoByteArrays(message, body);
+
+        } else if (method.equals("GET") && route.equals("/logs")) {
+            byte[] message = "HTTP/1.1 401\r\n\r\nAuthentication required".getBytes();
+            response = message;
 
         } else {
             response = "HTTP/1.1 404 Not Found\r\n".getBytes();

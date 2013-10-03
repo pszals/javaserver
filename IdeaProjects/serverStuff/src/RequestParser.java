@@ -43,12 +43,23 @@ public class RequestParser {
         state.put("state", body);
         HashMap output = new HashMap();
         output.put("message", outputMessage);
+        if (headerFields.containsKey("Authorization")){
+            output.put("Authorization", headerFields.get("Authorization"));
+        }
         output.put("state", state);
 
         return output;
     }
 
     public void parseRequest(String request) throws UnsupportedEncodingException {
+        // TODO Make this a method for storing requests for Basic Authentication
+//        if (state.get("requests") != null) {
+//            String oldRequests = new String((byte[]) state.get("requests"));
+//            state.put("requests", oldRequests + request);
+//        } else {
+//            state.put("requests", request);
+//        }
+
         splitHeadFromBody(request);
         ArrayList<String> splitRequest = splitRequestByLine(head);
         parseHead(splitRequest.get(0));
@@ -142,7 +153,7 @@ public class RequestParser {
         return protocol;
     }
 
-    public void setProtocol(String protocol) {
+    private void setProtocol(String protocol) {
         this.protocol = protocol;
     }
 
