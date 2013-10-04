@@ -4,7 +4,9 @@ public class Router {
     public byte[] respondToRouteRequest(String method, String route, byte[] body) throws IOException {
         byte[] response = null;
         ResponseBuilder responseBuilder = new ResponseBuilder();
-
+        //     registerRoutes("GET", [{"form" => response()}, "redirect"])
+        //{"GET" => ["/form"]}
+        //routes[method].include?(route)
         if (method.equals("GET") && route.equals("/")) {
             response = "HTTP/1.1 200 OK\r\n\r\n<a href='file1'>file1</a><a href='file2'>file2</a><a href='image.gif'>image.gif</a><a href='image.jpeg'>image.jpeg</a><a href='image.png'>image.png</a><a href='text-file.txt'>text-file.txt</a><a href='partial_content.txt'>partial_content.txt</a>".getBytes();
 

@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
 
-public class RequestParser {
+public class RequestHandler {
 
     private final HashMap state;
     private Map headerFields;
@@ -15,7 +15,7 @@ public class RequestParser {
     private BufferedReader bufferedReader;
     private String queryString;
 
-    public RequestParser(BufferedReader bufferedReader, HashMap state) {
+    public RequestHandler(BufferedReader bufferedReader, HashMap state) {
         this.bufferedReader = bufferedReader;
         this.state = state;
     }
@@ -24,26 +24,20 @@ public class RequestParser {
         readHead();
         String request = getHead();
 
-        if ((getState() != null) && (getState().get("state") != null)) {
+        if (stateIsPassedFromLastRequest()) {
             setBody((byte[]) getState().get("state"));
         }
-
         parseRequest(request);
 
         if (headerFields.containsKey("Content-Length")) {
-            setBody((addSpacesAroundEqualsSigns(readBody(Integer.parseInt(headerFields.get("Content-Length").toString())))).getBytes());
+            setBody(readBodyAccordingToContentLength());
         }
 
         HashMap output = new HashMap();
 
-        if (headerFields.containsKey("Authorization") || ("/logs".equals(getRoute()))){
+        if (authorizationIsRequired()) {
             output.put("Authorization", headerFields.get("Authorization"));
-
-            if(!(output.get("Authorization") != null && output.get("Authorization").equals("Basic YWRtaW46aHVudGVyMg=="))){
-                setBody(" 401\r\n\r\nAuthentication required".getBytes());
-            } else if(output.get("Authorization").equals("Basic YWRtaW46aHVudGVyMg==")){
-                setBody(" 200 OK\r\n\r\nGET /log HTTP/1.1\nPUT /these HTTP/1.1\nHEAD /requests HTTP/1.1".getBytes());
-            }
+            handleAuthorization(output);
         }
 
         String route = getRoute();
@@ -64,14 +58,6 @@ public class RequestParser {
     }
 
     public void parseRequest(String request) throws UnsupportedEncodingException {
-        // TODO Make this a method for storing requests for Basic Authentication
-//        if (state.get("requests") != null) {
-//            String oldRequests = new String((byte[]) state.get("requests"));
-//            state.put("requests", oldRequests + request);
-//        } else {
-//            state.put("requests", request);
-//        }
-
         splitHeadFromBody(request);
         ArrayList<String> splitRequest = splitRequestByLine(head);
         parseHead(splitRequest.get(0));
@@ -143,6 +129,36 @@ public class RequestParser {
     public void parseQueryString(String queryString) throws UnsupportedEncodingException {
         QueryStringParser queryStringParser = new QueryStringParser();
         setBody(queryStringParser.queryStringToSymbolString(queryString).getBytes());
+    }
+
+    private boolean stateIsPassedFromLastRequest() {
+        return (getState() != null) && (getState().get("state") != null);
+    }
+
+    private byte[] readBodyAccordingToContentLength() throws IOException {
+        return (addSpacesAroundEqualsSigns(readBody(Integer.parseInt(headerFields.get("Content-Length").toString())))).getBytes();
+    }
+
+    private boolean authorizationIsRequired() {
+        return (headerFields.containsKey("Authorization") || ("/logs".equals(getRoute())));
+    }
+
+    private boolean credentialsAreValid() {
+        return headerFields.get("Authorization").equals("Basic YWRtaW46aHVudGVyMg==");
+    }
+
+    private boolean credentialsAreRequired(HashMap output) {
+        return (output.get("Authorization") != null && output.get("Authorization").equals("Basic YWRtaW46aHVudGVyMg=="));
+    }
+
+    private void handleAuthorization(HashMap output) {
+        if (credentialsAreRequired(output)) {
+            if(credentialsAreValid()){
+                setBody(" 200 OK\r\n\r\nGET /log HTTP/1.1\nPUT /these HTTP/1.1\nHEAD /requests HTTP/1.1".getBytes());
+            }
+        } else {
+            setBody(" 401\r\n\r\nAuthentication required".getBytes());
+        }
     }
 
     public String getHttpMethod() {

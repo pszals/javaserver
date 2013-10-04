@@ -1,5 +1,3 @@
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.*;
@@ -11,24 +9,24 @@ import java.util.Map;
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 
-public class RequestParserTest {
+public class RequestHandlerTest {
 
     @Test
     public void testReadMessageHead() throws UnsupportedEncodingException {
         String request = "GET / HTTP/1.1";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
         HashMap state = new HashMap();
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
-        requestParser.parseHead(request);
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
+        requestHandler.parseHead(request);
 
-        assertEquals("GET", requestParser.getHttpMethod());
+        assertEquals("GET", requestHandler.getHttpMethod());
 
         BufferedReader newBufferedReader = new BufferedReader(new StringReader(request));
-        requestParser = new RequestParser(newBufferedReader, state);
+        requestHandler = new RequestHandler(newBufferedReader, state);
         request = "POST / HTTP/1.1";
-        requestParser.parseHead(request);
+        requestHandler.parseHead(request);
 
-        assertEquals("POST", requestParser.getHttpMethod());
+        assertEquals("POST", requestHandler.getHttpMethod());
     }
 
     @Test
@@ -39,8 +37,8 @@ public class RequestParserTest {
                 "Connection: keep-alive\n";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
         HashMap state = new HashMap();
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
-        List<String> parsedMessageHead = requestParser.splitRequestByLine(request);
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
+        List<String> parsedMessageHead = requestHandler.splitRequestByLine(request);
 
         assertEquals("GET / HTTP/1.1", parsedMessageHead.get(0));
         assertEquals("Host: localhost:5000", parsedMessageHead.get(1));
@@ -54,14 +52,14 @@ public class RequestParserTest {
                 "Connection: keep-alive\n";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
         HashMap state = new HashMap();
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
-        ArrayList<String> splitRequest = requestParser.splitRequestByLine(request);
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
+        ArrayList<String> splitRequest = requestHandler.splitRequestByLine(request);
         Map testMap = new HashMap();
         testMap.put("Host", "localhost:5000");
         testMap.put("Connection", "keep-alive");
-        requestParser.mapFields(splitRequest);
+        requestHandler.mapFields(splitRequest);
 
-        assertEquals(testMap, requestParser.getHeaderFields());
+        assertEquals(testMap, requestHandler.getHeaderFields());
 
 
     }
@@ -78,12 +76,12 @@ public class RequestParserTest {
                             "Cookie: textwrapon=false; wysiwyg=textarea";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
         HashMap state = new HashMap();
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
-        requestParser.parseRequest(request);
-        assertEquals("GET", requestParser.getHttpMethod());
-        assertEquals("/", requestParser.getRoute());
-        assertEquals("HTTP/1.1", requestParser.getProtocol());
-        assertEquals("localhost:5000", requestParser.getHeaderFields().get("Host"));
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
+        requestHandler.parseRequest(request);
+        assertEquals("GET", requestHandler.getHttpMethod());
+        assertEquals("/", requestHandler.getRoute());
+        assertEquals("HTTP/1.1", requestHandler.getProtocol());
+        assertEquals("localhost:5000", requestHandler.getHeaderFields().get("Host"));
     }
 
     @Test
@@ -94,20 +92,20 @@ public class RequestParserTest {
                             "data=cosby";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
         HashMap state = new HashMap();
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
-        requestParser.parseRequest(request);
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
+        requestHandler.parseRequest(request);
         assertEquals("GET / HTTP/1.1\n" +
                 "Host: localhost:5000\n" +
-                "Accept-Language: en-US,en;q=0.8", requestParser.getHead());
+                "Accept-Language: en-US,en;q=0.8", requestHandler.getHead());
     }
 
     @Test
     public void testAddSpacesAroundEqualsSigns() {
         BufferedReader bufferedReader = new BufferedReader(new StringReader(""));
         HashMap state = new HashMap();
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
         String body = "data=cosby";
-        assertEquals("data = cosby", requestParser.addSpacesAroundEqualsSigns(body));
+        assertEquals("data = cosby", requestHandler.addSpacesAroundEqualsSigns(body));
     }
 
     @Test
@@ -118,12 +116,12 @@ public class RequestParserTest {
 
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
         HashMap state = new HashMap();
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
-        requestParser.readHead();
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
+        requestHandler.readHead();
 
         assertEquals(("GET / HTTP/1.1\n" +
                 "Host: localhost:5000\n" +
-                "Accept-Language: en-US,en;q=0.8\n"), requestParser.getHead());
+                "Accept-Language: en-US,en;q=0.8\n"), requestHandler.getHead());
 
     }
 
@@ -134,9 +132,9 @@ public class RequestParserTest {
                              "Accept-Language: en-US,en;q=0.8\r\n\r\n";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
         HashMap state = new HashMap();
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
 
-        HashMap response = requestParser.respondToRequest();
+        HashMap response = requestHandler.respondToRequest();
         byte[] byteResponse = (byte[]) response.get("message");
 
         assertArrayEquals("HTTP/1.1 200 OK\r\n\r\n<a href='file1'>file1</a><a href='file2'>file2</a><a href='image.gif'>image.gif</a><a href='image.jpeg'>image.jpeg</a><a href='image.png'>image.png</a><a href='text-file.txt'>text-file.txt</a><a href='partial_content.txt'>partial_content.txt</a>".
@@ -149,9 +147,9 @@ public class RequestParserTest {
         String request = "This is 16 bytes";
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
         HashMap state = new HashMap();
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
 
-        assertEquals("This is 16 bytes", requestParser.readBody(16));
+        assertEquals("This is 16 bytes", requestHandler.readBody(16));
     }
 
     @Test
@@ -162,9 +160,9 @@ public class RequestParserTest {
 
         BufferedReader bufferedReader = new BufferedReader(new StringReader(message));
         HashMap state = new HashMap();
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
 
-        HashMap response = requestParser.respondToRequest();
+        HashMap response = requestHandler.respondToRequest();
 
         Object header = response.get("message");
 
@@ -182,9 +180,9 @@ public class RequestParserTest {
 
         BufferedReader bufferedReader = new BufferedReader(new StringReader(message));
         HashMap state = new HashMap();
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
 
-        HashMap response = requestParser.respondToRequest();
+        HashMap response = requestHandler.respondToRequest();
 
         HashMap stateObject = (HashMap) response.get("state");
         byte[] nestedBody = (byte[]) stateObject.get("state");
@@ -204,11 +202,11 @@ public class RequestParserTest {
         HashMap state = new HashMap();
         state.put("state", "hello".getBytes());
 
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
 
-        requestParser.respondToRequest();
+        requestHandler.respondToRequest();
 
-        assertArrayEquals("hello".getBytes(), requestParser.getBody());
+        assertArrayEquals("hello".getBytes(), requestHandler.getBody());
     }
 
     @Test
@@ -217,16 +215,16 @@ public class RequestParserTest {
         HashMap state = null;
 
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
 
-        requestParser.parseRoute("/parameters?variable_1=Operators%20%3C");
+        requestHandler.parseRoute("/parameters?variable_1=Operators%20%3C");
 
-        assertEquals("/parameters", requestParser.getRoute());
-        assertEquals("variable_1=Operators%20%3C", requestParser.getQueryString());
+        assertEquals("/parameters", requestHandler.getRoute());
+        assertEquals("variable_1=Operators%20%3C", requestHandler.getQueryString());
 
-        requestParser.parseQueryString(requestParser.getQueryString());
+        requestHandler.parseQueryString(requestHandler.getQueryString());
 
-        assertEquals("variable_1 = Operators <", new String(requestParser.getBody()));
+        assertEquals("variable_1 = Operators <", new String(requestHandler.getBody()));
 
     }
 
@@ -236,11 +234,11 @@ public class RequestParserTest {
         HashMap state = null;
 
         BufferedReader bufferedReader = new BufferedReader(new StringReader(request));
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
 
-        requestParser.respondToRequest();
+        requestHandler.respondToRequest();
 
-        assertEquals("variable_1 = Operators <", new String(requestParser.getBody()));
+        assertEquals("variable_1 = Operators <", new String(requestHandler.getBody()));
     }
 
     @Test
@@ -251,9 +249,9 @@ public class RequestParserTest {
 
         BufferedReader bufferedReader = new BufferedReader(new StringReader(message));
         HashMap state = new HashMap();
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
 
-        HashMap response = requestParser.respondToRequest();
+        HashMap response = requestHandler.respondToRequest();
 
         Object header = response.get("message");
         Object credentials = response.get("Authorization");
@@ -275,9 +273,9 @@ public class RequestParserTest {
 
         BufferedReader bufferedReader = new BufferedReader(new StringReader(message));
         HashMap state = new HashMap();
-        RequestParser requestParser = new RequestParser(bufferedReader, state);
+        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
 
-        HashMap response = requestParser.respondToRequest();
+        HashMap response = requestHandler.respondToRequest();
 
         byte[] header = (byte[]) response.get("message");
         byte[] responseFromValidAuthentication = "HTTP/1.1 200 OK\r\n\r\nGET /log HTTP/1.1\nPUT /these HTTP/1.1\nHEAD /requests HTTP/1.1".getBytes();
