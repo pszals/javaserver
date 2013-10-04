@@ -102,8 +102,8 @@ public class Router {
             response = responseBuilder.addTwoByteArrays(message, body);
 
         } else if (method.equals("GET") && route.equals("/logs")) {
-            byte[] message = "HTTP/1.1 401\r\n\r\nAuthentication required".getBytes();
-            response = message;
+            byte[] message = "HTTP/1.1".getBytes();
+            response = responseBuilder.addTwoByteArrays(message, body);
 
         } else {
             response = "HTTP/1.1 404 Not Found\r\n".getBytes();

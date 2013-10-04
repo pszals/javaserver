@@ -1,11 +1,8 @@
-import org.junit.Assert;
 import org.junit.Test;
-
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 
 import static junit.framework.Assert.assertEquals;
-import static org.junit.Assert.assertArrayEquals;
+
 
 public class QueryStringParserTest {
 

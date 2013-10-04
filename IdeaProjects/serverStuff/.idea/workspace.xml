@@ -19,10 +19,10 @@
     <file path="/MessageHeadParser.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380040354268" ignored="false" />
     <file path="$PROJECT_DIR$/src/MessageHeadParsers.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1379950627033" ignored="false" />
     <file path="/a.dummy" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380221338913" ignored="false" />
-    <file path="/RequestParserTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380819504460" ignored="false" />
-    <file path="/RequestParser.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380819680699" ignored="false" />
+    <file path="/RequestParserTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380826795223" ignored="false" />
+    <file path="/RequestParser.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380828591373" ignored="false" />
     <file path="/RouterTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380733145196" ignored="false" />
-    <file path="/Router.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380814404849" ignored="false" />
+    <file path="/Router.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380828521106" ignored="false" />
     <file path="/Server.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380750659743" ignored="false" />
     <file path="/ServerTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380204572424" ignored="false" />
     <file path="/FileReaderTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380577786613" ignored="false" />
@@ -42,7 +42,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/serverStuff$All_in_ServerStuff.coverage" NAME="All in ServerStuff Coverage Results" MODIFIED="1380748611240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/serverStuff$All_in_ServerStuff.coverage" NAME="All in ServerStuff Coverage Results" MODIFIED="1380831575487" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/serverStuff$HelloWorldTest.coverage" NAME="HelloWorldTest Coverage Results" MODIFIED="1379521885012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CoverageViewManager">
@@ -103,19 +103,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="229" selection-end="229" vertical-scroll-proportion="-3.6">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestParserTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RequestParserTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/RequestParserTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="260" column="63" selection-start="10779" selection-end="10779" vertical-scroll-proportion="1.3177778">
+            <state line="267" column="0" selection-start="11076" selection-end="11076" vertical-scroll-proportion="-12.92">
               <folding />
             </state>
           </provider>
@@ -124,17 +115,28 @@
       <file leaf-file-name="Router.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Router.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="0" selection-start="5214" selection-end="5214" vertical-scroll-proportion="-9.0">
+            <state line="49" column="19" selection-start="2607" selection-end="2608" vertical-scroll-proportion="23.4">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Server.java">
+      <file leaf-file-name="QueryStringParserTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/QueryStringParserTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="28" selection-start="1216" selection-end="1216" vertical-scroll-proportion="-15.6">
+            <state line="3" column="0" selection-start="69" selection-end="69" vertical-scroll-proportion="-1.8">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyFileReaderTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/MyFileReaderTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="36" selection-start="684" selection-end="684" vertical-scroll-proportion="-0.6">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,50 +152,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BasicAuthorization.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BasicAuthorization.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="58" selection-start="207" selection-end="207" vertical-scroll-proportion="-2.4">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyFileReaderTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/MyFileReaderTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="36" selection-start="684" selection-end="684" vertical-scroll-proportion="-11.4">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QueryStringParser.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/QueryStringParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="41" selection-start="722" selection-end="722" vertical-scroll-proportion="-12.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestParser.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RequestParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="75" selection-start="1596" selection-end="1596" vertical-scroll-proportion="-11.32">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RouterTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/RouterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="110" selection-start="4002" selection-end="4002" vertical-scroll-proportion="-10.0">
+            <state line="89" column="110" selection-start="4002" selection-end="4002" vertical-scroll-proportion="-7.8">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Server.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Server.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="7" selection-start="7" selection-end="7" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServerTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/ServerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="13" selection-start="37" selection-end="37" vertical-scroll-proportion="-1.2">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RequestParser.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/RequestParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="43" selection-start="870" selection-end="870" vertical-scroll-proportion="0.45356372">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResponseBuilderTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/ResponseBuilderTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="13" selection-start="231" selection-end="231" vertical-scroll-proportion="-5.4">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -218,15 +218,15 @@
         <option value="$PROJECT_DIR$/src/MyFileReader.java" />
         <option value="$PROJECT_DIR$/test/MyFileReaderTest.java" />
         <option value="$PROJECT_DIR$/test/RouterTest.java" />
-        <option value="$PROJECT_DIR$/test/QueryStringParserTest.java" />
         <option value="$PROJECT_DIR$/src/QueryStringParser.java" />
-        <option value="$PROJECT_DIR$/src/Server.java" />
-        <option value="$PROJECT_DIR$/src/Router.java" />
         <option value="$PROJECT_DIR$/src/BasicAuthorization/BasicAuthorization.java" />
         <option value="$PROJECT_DIR$/test/BasicAuthorizationTest.java" />
+        <option value="$PROJECT_DIR$/src/Router.java" />
         <option value="$PROJECT_DIR$/src/BasicAuthorization.java" />
-        <option value="$PROJECT_DIR$/src/RequestParser.java" />
+        <option value="$PROJECT_DIR$/test/QueryStringParserTest.java" />
         <option value="$PROJECT_DIR$/test/RequestParserTest.java" />
+        <option value="$PROJECT_DIR$/src/Server.java" />
+        <option value="$PROJECT_DIR$/src/RequestParser.java" />
       </list>
     </option>
   </component>
@@ -355,7 +355,7 @@
       <recent name="src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RequestParserTest">
+  <component name="RunManager" selected="JUnit.All in ServerStuff">
     <configuration default="false" name="TestHello" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="ServerStuff" />
@@ -815,11 +815,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3990025" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -828,6 +829,7 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.67206985" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24892396" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -836,8 +838,6 @@
       <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32793018" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.6708229" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3990025" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -907,67 +907,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/MyFileReader.java">
+    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/io/OutputStream.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="99" selection-start="270" selection-end="348" vertical-scroll-proportion="-6.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ResponseBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="295" selection-end="295" vertical-scroll-proportion="0.0">
+        <state line="18" column="0" selection-start="682" selection-end="682" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ServerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.10.jar!/org/junit/Assert.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="0" selection-start="5005" selection-end="5005" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.10.jar!/org/junit/internal/ComparisonCriteria.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="747" selection-end="747" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/QueryStringParserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="59" selection-start="701" selection-end="701" vertical-scroll-proportion="-12.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/QueryStringParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="41" selection-start="722" selection-end="722" vertical-scroll-proportion="-12.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/RouterTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="110" selection-start="4002" selection-end="4002" vertical-scroll-proportion="-10.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -978,16 +921,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Router.java">
+    <entry file="file://$PROJECT_DIR$/src/QueryStringParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="0" selection-start="5214" selection-end="5214" vertical-scroll-proportion="-9.0">
-          <folding />
+        <state line="5" column="33" selection-start="139" selection-end="141" vertical-scroll-proportion="-1.4705882">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/MyFileReaderTest.java">
+    <entry file="file://$PROJECT_DIR$/src/MyFileReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="36" selection-start="684" selection-end="684" vertical-scroll-proportion="-11.4">
+        <state line="5" column="19" selection-start="129" selection-end="130" vertical-scroll-proportion="-0.9607843">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -996,15 +941,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BasicAuthorization.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="58" selection-start="207" selection-end="207" vertical-scroll-proportion="-2.4">
+        <state line="4" column="0" selection-start="149" selection-end="149" vertical-scroll-proportion="-2.4">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server.java">
+    <entry file="file://$PROJECT_DIR$/src/ResponseBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="28" selection-start="1216" selection-end="1216" vertical-scroll-proportion="-15.6">
+        <state line="9" column="0" selection-start="295" selection-end="295" vertical-scroll-proportion="-4.8">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ResponseBuilderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="231" selection-end="231" vertical-scroll-proportion="-5.4">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/RouterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="110" selection-start="4002" selection-end="4002" vertical-scroll-proportion="-7.8">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ServerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="13" selection-start="37" selection-end="37" vertical-scroll-proportion="-1.2">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/QueryStringParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="69" selection-end="69" vertical-scroll-proportion="-1.8">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/MyFileReaderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="36" selection-start="684" selection-end="684" vertical-scroll-proportion="-0.6">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1017,16 +1003,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RequestParser.java">
+    <entry file="file://$PROJECT_DIR$/test/RequestParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="75" selection-start="1596" selection-end="1596" vertical-scroll-proportion="-11.32">
+        <state line="267" column="0" selection-start="11076" selection-end="11076" vertical-scroll-proportion="-12.92">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/RequestParserTest.java">
+    <entry file="file://$PROJECT_DIR$/src/Router.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="260" column="63" selection-start="10779" selection-end="10779" vertical-scroll-proportion="1.3177778">
+        <state line="49" column="19" selection-start="2607" selection-end="2608" vertical-scroll-proportion="23.4">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="7" selection-start="7" selection-end="7" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RequestParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="43" selection-start="870" selection-end="870" vertical-scroll-proportion="0.45356372">
           <folding />
         </state>
       </provider>

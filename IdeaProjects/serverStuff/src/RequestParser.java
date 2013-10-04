@@ -23,14 +23,27 @@ public class RequestParser {
     public HashMap respondToRequest() throws IOException {
         readHead();
         String request = getHead();
-        parseRequest(request);
 
         if ((getState() != null) && (getState().get("state") != null)) {
             setBody((byte[]) getState().get("state"));
         }
 
+        parseRequest(request);
+
         if (headerFields.containsKey("Content-Length")) {
             setBody((addSpacesAroundEqualsSigns(readBody(Integer.parseInt(headerFields.get("Content-Length").toString())))).getBytes());
+        }
+
+        HashMap output = new HashMap();
+
+        if (headerFields.containsKey("Authorization") || ("/logs".equals(getRoute()))){
+            output.put("Authorization", headerFields.get("Authorization"));
+
+            if(!(output.get("Authorization") != null && output.get("Authorization").equals("Basic YWRtaW46aHVudGVyMg=="))){
+                setBody(" 401\r\n\r\nAuthentication required".getBytes());
+            } else if(output.get("Authorization").equals("Basic YWRtaW46aHVudGVyMg==")){
+                setBody(" 200 OK\r\n\r\nGET /log HTTP/1.1\nPUT /these HTTP/1.1\nHEAD /requests HTTP/1.1".getBytes());
+            }
         }
 
         String route = getRoute();
@@ -39,14 +52,13 @@ public class RequestParser {
         Router router = new Router();
 
         byte[] outputMessage = router.respondToRouteRequest(method, route, body);
-        HashMap state = new HashMap();
-        state.put("state", body);
-        HashMap output = new HashMap();
+
+        HashMap newState = new HashMap();
+        newState.put("state", body);
+        newState.put("requests", request);
+
         output.put("message", outputMessage);
-        if (headerFields.containsKey("Authorization")){
-            output.put("Authorization", headerFields.get("Authorization"));
-        }
-        output.put("state", state);
+        output.put("state", newState);
 
         return output;
     }

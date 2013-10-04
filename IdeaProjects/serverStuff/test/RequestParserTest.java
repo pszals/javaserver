@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -243,9 +244,9 @@ public class RequestParserTest {
     }
 
     @Test
-    public void testHandlesAuthentication() throws IOException {
+    public void testHandlesInvalidAuthentication() throws IOException {
         String message =    "GET /logs HTTP/1.1\n" +
-                            "Authorization: Basic YWRtaW46aHVudGVyMg==\r\n\r\n";
+                            "Authorization: Basic YWRtaW46aHVudGVyMh==\r\n\r\n";  //bad_credentials (terminal h instead of g)
 
 
         BufferedReader bufferedReader = new BufferedReader(new StringReader(message));
@@ -258,6 +259,30 @@ public class RequestParserTest {
         Object credentials = response.get("Authorization");
 
         assertEquals("HTTP/1.1 401\r\n\r\nAuthentication required", new String((byte[]) header));
-        assertEquals("Basic YWRtaW46aHVudGVyMg==", credentials);
+        assertEquals("Basic YWRtaW46aHVudGVyMh==", credentials);       //bad_credentials (terminal h instead of g)
+
+        HashMap returnedState = (HashMap) response.get("state");
+        String  requests = (String) returnedState.get("requests");
+
+        assert(requests != null);
         }
+
+    @Test
+    public void testHandlesValidAuthentication() throws IOException {
+        String message =    "GET /logs HTTP/1.1\n" +
+                            "Authorization: Basic YWRtaW46aHVudGVyMg==\r\n\r\n";
+
+
+        BufferedReader bufferedReader = new BufferedReader(new StringReader(message));
+        HashMap state = new HashMap();
+        RequestParser requestParser = new RequestParser(bufferedReader, state);
+
+        HashMap response = requestParser.respondToRequest();
+
+        byte[] header = (byte[]) response.get("message");
+        byte[] responseFromValidAuthentication = "HTTP/1.1 200 OK\r\n\r\nGET /log HTTP/1.1\nPUT /these HTTP/1.1\nHEAD /requests HTTP/1.1".getBytes();
+
+        assertEquals(new String(responseFromValidAuthentication), new String(header));
+
+    }
 }
