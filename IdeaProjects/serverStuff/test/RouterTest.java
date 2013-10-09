@@ -20,10 +20,6 @@ public class RouterTest {
         route = "/foobar";
         assertArrayEquals("HTTP/1.1 404 Not Found\r\n".getBytes(), router.respondToRouteRequest(method, route, body));
 
-        method = "GET";
-        route = "/form";
-        assertArrayEquals("HTTP/1.1 200 OK\r\n\r\n".getBytes(), router.respondToRouteRequest(method, route, body));
-
         body = "".getBytes();
         method = "GET";
         route = "/redirect";
@@ -89,12 +85,4 @@ public class RouterTest {
         body = "".getBytes();
         assertEquals("HTTP/1.1 200 OK\r\n\r\n", new String(router.respondToRouteRequest(method, route, body)));
     }
-
-    @Test
-    public void testInterpolatingNull() throws IOException {
-        Router router = new Router();
-        byte[] body = "".getBytes();
-        String method = "GET";
-        String route = "/form";
-        assertArrayEquals("HTTP/1.1 200 OK\r\n\r\n".getBytes(), router.respondToRouteRequest(method, route, body));    }
 }

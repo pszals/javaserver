@@ -13,7 +13,7 @@ public class MyFileReaderTest {
         RandomAccessFile f = new RandomAccessFile(testFile, "r");
         byte[] b = new byte[(int)f.length()];
 
-        String fileName = "/file1";
+        String fileName = "cob_spec/public/file1";
         MyFileReader myFileReader = new MyFileReader(fileName);
         byte[] fileContents = myFileReader.readFileContents();
 
@@ -22,7 +22,7 @@ public class MyFileReaderTest {
 
     @Test
     public void testConvertsGivenFileNameToWholePath() {
-        String myFile = "/file1";
+        String myFile = "cob_spec/public/file1";
         MyFileReader myFileReader = new MyFileReader(myFile);
         String path = "/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/cob_spec/public/file1";
         assertEquals(path, myFileReader.getPath());
@@ -37,7 +37,7 @@ public class MyFileReaderTest {
 
         f.read(b);
 
-        String fileName = "/image.png";
+        String fileName = "cob_spec/public/image.png";
         MyFileReader myFileReader = new MyFileReader(fileName);
         byte[] fileContents = myFileReader.readFileContents();
 

@@ -6,7 +6,9 @@ import java.nio.charset.Charset;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Server server = new Server();
+        SocketMaker socketMaker = new SocketMaker();
+        ServerSocket serverSocket = socketMaker.establishPort(5000);
+        Server server = new Server(serverSocket);
         server.start();
     }
 }

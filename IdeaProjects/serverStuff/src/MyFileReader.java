@@ -8,7 +8,7 @@ public class MyFileReader {
 
     public MyFileReader(String fileName) {
         this.fileName = fileName;
-        this.path = "/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/cob_spec/public" + fileName;
+        this.path = "/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/" + fileName;
     }
 
     public byte[] readFileContents() throws IOException {

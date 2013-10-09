@@ -24,9 +24,6 @@ public class RequestHandler {
         readHead();
         String request = getHead();
 
-        if (stateIsPassedFromLastRequest()) {
-            setBody((byte[]) getState().get("state"));
-        }
         parseRequest(request);
 
         if (headerFields.containsKey("Content-Length")) {
@@ -129,10 +126,6 @@ public class RequestHandler {
     public void parseQueryString(String queryString) throws UnsupportedEncodingException {
         QueryStringParser queryStringParser = new QueryStringParser();
         setBody(queryStringParser.queryStringToSymbolString(queryString).getBytes());
-    }
-
-    private boolean stateIsPassedFromLastRequest() {
-        return (getState() != null) && (getState().get("state") != null);
     }
 
     private byte[] readBodyAccordingToContentLength() throws IOException {
