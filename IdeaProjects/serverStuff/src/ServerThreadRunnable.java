@@ -1,8 +1,8 @@
 public class ServerThreadRunnable implements Runnable{
-    private RequestResponder responder;
+    private IRequestResponder responder;
 
-    public ServerThreadRunnable(RequestResponder responder){
-        this.responder = responder;
+    public ServerThreadRunnable(IRequestResponder iRequestResponder){
+        this.responder = iRequestResponder;
     }
 
     public void run() {

@@ -1,68 +1,54 @@
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Router {
+
+    private final ResponseHolder responseHolder = new ResponseHolder();
+
     public byte[] respondToRouteRequest(String method, String route, byte[] body) throws IOException {
-
-        List<String> gettableRoutes = new ArrayList<String>();
-        gettableRoutes.add("/form");
-        gettableRoutes.add("/file1");
-        gettableRoutes.add("/file2");
-        gettableRoutes.add("/text-file.txt");
-        gettableRoutes.add("/image.jpeg");
-        gettableRoutes.add("/image.gif");
-        gettableRoutes.add("/image.png");
-
+        List<String> routesWithFilesToRead = Arrays.asList("/form", "/file1", "/file1", "/text-file.txt", "/image.jpeg", "/image.gif", "/image.png");
+        List<String> unModifiableRoutes = Arrays.asList("/file1", "/file1", "/text-file.txt", "/image.jpeg", "/image.gif", "/image.png");
         byte[] response;
         ResponseBuilder responseBuilder = new ResponseBuilder();
 
         if (method.equals("GET") && route.equals("/")) {
-            response = "HTTP/1.1 200 OK\r\n\r\n<a href='file1'>file1</a><a href='file2'>file2</a><a href='image.gif'>image.gif</a><a href='image.jpeg'>image.jpeg</a><a href='image.png'>image.png</a><a href='text-file.txt'>text-file.txt</a><a href='partial_content.txt'>partial_content.txt</a>".getBytes();
-
-        } else if (method.equals("GET") && route.equals("/redirect")) {
-            response = "HTTP/1.1 301 Permanently Moved\r\nLocation: http://localhost:5000/".getBytes();
-
-        } else if (method.equals("GET") && route.equals("/partial_content.txt")) {
-            response = "HTTP/1.1 206 Partial Content\r\n\r\nThis".getBytes();
-
-        } else if (method.equals("PUT") && route.equals("/file1")) {
-            response = "HTTP/1.1 405 Method Not Allowed\r\n".getBytes();
-
-        } else if (method.equals("POST") && route.equals("/text-file.txt")) {
-            response = "HTTP/1.1 405 Method Not Allowed\r\n".getBytes();
+            response = responseHolder.indexResponse();
 
         } else if (route.equals("/method_options")) {
-            response = "HTTP/1.1 200 OK\r\nAllow: GET,HEAD,POST,OPTIONS,PUT".getBytes();
+            response = responseHolder.methodOptionsResponse();
 
-        } else if ((method.equals("POST") || (method.equals("PUT"))) && route.equals("/form")) {
-            MyFileWriter myFileWriter = new MyFileWriter("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/serverData/form");
-            myFileWriter.write(new String(body));
-            response = "HTTP/1.1 200 OK\r\n".getBytes();
+        } else if (requestModifiesForm(method, route)) {
+            response = responseHolder.modifiedFormResponse(body);
 
         } else if (method.equals("GET") && route.equals("/parameters")) {
-            byte[] message = "HTTP/1.1 200 OK\r\n\r\n".getBytes();
-            response = responseBuilder.addTwoByteArrays(message, body);
+            response = responseHolder.parametersResponse(body, responseBuilder);
 
         } else if (method.equals("GET") && route.equals("/logs")) {
-            byte[] message = "HTTP/1.1".getBytes();
-            response = responseBuilder.addTwoByteArrays(message, body);
+            response = responseHolder.requestLogsResponse(body, responseBuilder);
 
         } else if (method.equals("GET") && route.equals("/form")) {
-            byte[] message = "HTTP/1.1 200 OK\r\n\r\n".getBytes();
-            MyFileReader myFileReader = new MyFileReader("serverData" + route);
-            body = myFileReader.readFileContents();
-            response = responseBuilder.addTwoByteArrays(message, body);
+            response = responseHolder.getFormResponse(route, responseBuilder);
 
-        } else if (method.equals("GET") && gettableRoutes.contains(route)) {
-            MyFileReader myFileReader = new MyFileReader("cob_spec/public" + route);
-            byte[] message = "HTTP/1.1 200 OK\r\n\r\n".getBytes();
-            byte[] fileContents = myFileReader.readFileContents();
-            response = responseBuilder.addTwoByteArrays(message, fileContents);
+        } else if (method.equals("GET") && routesWithFilesToRead.contains(route)) {
+            response = responseHolder.readFileResponse(route, responseBuilder);
+
+        } else if (method.equals("GET") && route.equals("/redirect")) {
+            response = responseHolder.redirectResponse();
+
+        } else if (method.equals("GET") && route.equals("/partial_content.txt")) {
+            response = responseHolder.partialContentResponse();
+
+        } else if ((method.equals("PUT") || method.equals("POST")) && unModifiableRoutes.contains(route)) {
+            response = responseHolder.methodNotAllowedResponse();
 
         } else {
-            response = "HTTP/1.1 404 Not Found\r\n".getBytes();
+            response = responseHolder.notFoundResponse();
         }
         return response;
+    }
+
+    private boolean requestModifiesForm(String method, String route) {
+        return (method.equals("POST") || (method.equals("PUT"))) && route.equals("/form");
     }
 }

@@ -23,7 +23,6 @@ public class RequestHandler {
     public HashMap respondToRequest() throws IOException {
         readHead();
         String request = getHead();
-
         parseRequest(request);
 
         if (headerFields.containsKey("Content-Length")) {

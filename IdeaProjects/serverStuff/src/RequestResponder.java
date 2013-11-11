@@ -5,7 +5,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.HashMap;
 
-public class RequestResponder implements Runnable {
+public class RequestResponder implements IRequestResponder {
     private final Socket connectionSocket;
 
     public RequestResponder(Socket connectionSocket) {
@@ -25,7 +25,6 @@ public class RequestResponder implements Runnable {
         BufferedReader reader = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
         RequestHandler requestHandler = new RequestHandler(reader, new HashMap());
         HashMap response = requestHandler.respondToRequest();
-
         byte[] outputMessage = (byte[]) response.get("message");
         OutputStream out = connectionSocket.getOutputStream();
 

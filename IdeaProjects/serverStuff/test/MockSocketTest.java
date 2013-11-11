@@ -27,7 +27,6 @@ public class MockSocketTest {
         MockSocket mockSocket = new MockSocket();
         InputStream inputStream = mockSocket.getInputStream();
         assertThat(inputStream, instanceOf(InputStream.class));
-
     }
 
     @Test
