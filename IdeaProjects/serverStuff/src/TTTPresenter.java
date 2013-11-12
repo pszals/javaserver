@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class TTTPresenter {
     public ArrayList convertSquareToHtml(ArrayList board) {
         ArrayList htmlBoardWithIndex = new ArrayList();
@@ -47,10 +49,9 @@ public class TTTPresenter {
 
     public String boardAsHtml(ArrayList board) {
         String boardAsHtml =
-
-        wrapInHtml(
-        wrapInPlayGameForm(
-        wrapEachRowInHtml(
+            wrapInHtml(
+            wrapInPlayGameForm(
+            wrapEachRowInHtml(
             convertSquareToHtml(board))));
         return boardAsHtml;
     }

@@ -10,8 +10,8 @@
     <file path="/Main.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1381173956493" ignored="false" />
     <file path="/HelloWorld.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1379521576537" ignored="false" />
     <file path="/Hello.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1379432711236" ignored="false" />
-    <file path="/Dummy.txt" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384220770850" ignored="false" />
-    <file path="/fragment.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384195507355" ignored="false" />
+    <file path="/Dummy.txt" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384283878188" ignored="false" />
+    <file path="/fragment.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384283882969" ignored="false" />
     <file path="/Kelly.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1379432297910" ignored="false" />
     <file path="/HelloWorldTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1379521420611" ignored="false" />
     <file path="/MainTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1380031856219" ignored="false" />
@@ -61,13 +61,15 @@
     <file path="$PROJECT_DIR$/../../../clojure_ttt/clojure-ttt/.idea/compiler.xml" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1383859649272" ignored="false" />
     <file path="$PROJECT_DIR$/../../../clojure_ttt/clojure-ttt/.idea/modules.xml" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1383859649272" ignored="false" />
     <file path="$PROJECT_DIR$/../../../clojure_ttt/clojure-ttt/.idea/vcs.xml" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1383859649272" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../clojure_ttt/clojure-ttt/.idea/workspace.xml" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384271472639" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../clojure_ttt/clojure-ttt/.idea/workspace.xml" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384283133831" ignored="false" />
     <file path="$PROJECT_DIR$/../../../clojure_ttt/clojure-ttt/.idea/misc.xml" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1383859649273" ignored="false" />
-    <file path="/TTTPresenter.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384271672999" ignored="false" />
+    <file path="/TTTPresenter.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384282684414" ignored="false" />
     <file path="/TTTPresenterTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384271040432" ignored="false" />
-    <file path="/project.clj" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384220475667" ignored="false" />
-    <file path="$PROJECT_DIR$/../../../clojure_ttt/clojure-ttt/project.clj" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384220476862" ignored="false" />
+    <file path="/project.clj" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384276692918" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../clojure_ttt/clojure-ttt/project.clj" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384276697997" ignored="false" />
     <file path="/Clojure REPL" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384220754608" ignored="false" />
+    <file path="/ClojureParserTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384283859068" ignored="false" />
+    <file path="/ClojureParser.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384285544096" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,10 +139,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TTTPresenterTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="TTTPresenterTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/TTTPresenterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="59" selection-start="2317" selection-end="2317" vertical-scroll-proportion="0.5232558">
+            <state line="73" column="37" selection-start="2018" selection-end="2018" vertical-scroll-proportion="-39.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -151,7 +153,7 @@
       <file leaf-file-name="TTTPresenter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TTTPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="29" selection-start="1769" selection-end="1769" vertical-scroll-proportion="-8.90196">
+            <state line="57" column="0" selection-start="1936" selection-end="1936" vertical-scroll-proportion="-16.44">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -159,10 +161,50 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="ClojureParser.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ClojureParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="19" selection-start="96" selection-end="96" vertical-scroll-proportion="0.09127789">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClojureParserTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/ClojureParserTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="45" selection-start="570" selection-end="570" vertical-scroll-proportion="-13.2">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MockRequestHandlerTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/MockRequestHandlerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="13" selection-start="165" selection-end="165" vertical-scroll-proportion="-4.2">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MockRequestResponderTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/MockRequestResponderTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="13" selection-start="89" selection-end="89" vertical-scroll-proportion="-1.2">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ServerStuff.iml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ServerStuff.iml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="2" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -207,8 +249,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/test/RouterTest.java" />
-        <option value="$PROJECT_DIR$/src/Server.java" />
         <option value="$PROJECT_DIR$/src/RequestHandler.java" />
         <option value="$PROJECT_DIR$/test/MockRequestResponderTest.java" />
         <option value="$PROJECT_DIR$/src/IRequestHandler.java" />
@@ -221,13 +261,15 @@
         <option value="$PROJECT_DIR$/src/MockSocket.java" />
         <option value="$PROJECT_DIR$/test/MockSocketTest.java" />
         <option value="$PROJECT_DIR$/test/TTTPresenter.java" />
-        <option value="$PROJECT_DIR$/src/TTTPresenter.java" />
         <option value="$PROJECT_DIR$/test/TTTPresenterTest.java" />
+        <option value="$PROJECT_DIR$/src/TTTPresenter.java" />
+        <option value="$PROJECT_DIR$/test/ClojureParserTest.java" />
+        <option value="$PROJECT_DIR$/src/ClojureParser.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="17" />
+    <option name="x" value="-4" />
     <option name="y" value="22" />
     <option name="width" value="1440" />
     <option name="height" value="878" />
@@ -313,7 +355,16 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -366,32 +417,48 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serverStuff" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ServerStuff" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
-    <property name="MemberChooser.sorted" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="Downloaded.Files.Path" value="$PROJECT_DIR$/lib" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="MemberChooser.showClasses" value="true" />
-    <property name="FullScreen" value="false" />
-    <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -410,7 +477,7 @@
       <recent name="src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TTTPresenterTest">
+  <component name="RunManager" selected="JUnit.ClojureParserTest">
     <configuration default="false" name="TestHello" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="ServerStuff" />
@@ -864,7 +931,30 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <list size="14">
+    <configuration default="false" name="ClojureParserTest" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="ServerStuff" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ClojureParserTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="15">
       <item index="0" class="java.lang.String" itemvalue="Application.Main" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.MockServerSocketTest" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.MainTest" />
@@ -875,10 +965,11 @@
       <item index="7" class="java.lang.String" itemvalue="JUnit.BasicAuthorizationTest" />
       <item index="8" class="java.lang.String" itemvalue="JUnit.RequestResponderTest" />
       <item index="9" class="java.lang.String" itemvalue="JUnit.TTTPresenterTest" />
-      <item index="10" class="java.lang.String" itemvalue="JUnit.TestHello" />
-      <item index="11" class="java.lang.String" itemvalue="JUnit.Hello" />
-      <item index="12" class="java.lang.String" itemvalue="JUnit.HelloWorldTest" />
-      <item index="13" class="java.lang.String" itemvalue="JUnit.All in ServerStuff" />
+      <item index="10" class="java.lang.String" itemvalue="JUnit.ClojureParserTest" />
+      <item index="11" class="java.lang.String" itemvalue="JUnit.TestHello" />
+      <item index="12" class="java.lang.String" itemvalue="JUnit.Hello" />
+      <item index="13" class="java.lang.String" itemvalue="JUnit.HelloWorldTest" />
+      <item index="14" class="java.lang.String" itemvalue="JUnit.All in ServerStuff" />
     </list>
     <recent_temporary>
       <list size="4">
@@ -923,7 +1014,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="17" y="22" width="1440" height="878" extended-state="0" />
+    <frame x="-4" y="22" width="1440" height="878" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -939,7 +1030,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32585752" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24892086" sideWeight="0.59600997" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2482066" sideWeight="0.6741425" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19870876" sideWeight="0.75065964" order="0" side_tool="false" content_ui="combo" />
@@ -1017,27 +1108,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/RequestResponder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="34" selection-start="473" selection-end="473" vertical-scroll-proportion="-7.2">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ResponseBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="13" selection-start="80" selection-end="80" vertical-scroll-proportion="-1.2">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MyFileWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="32" selection-end="32" vertical-scroll-proportion="-1.2">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="39" selection-start="834" selection-end="834" vertical-scroll-proportion="-10.2">
@@ -1082,15 +1152,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/MockRequestHandlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MyFileReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="65" selection-start="517" selection-end="517" vertical-scroll-proportion="-9.0">
@@ -1118,26 +1179,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ServerStuff.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="2" column="0" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TTTPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="29" selection-start="1769" selection-end="1769" vertical-scroll-proportion="-8.90196">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/TTTPresenterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="59" selection-start="2317" selection-end="2317" vertical-scroll-proportion="0.5232558">
+        <state line="73" column="37" selection-start="2018" selection-end="2018" vertical-scroll-proportion="-39.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TTTPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="0" selection-start="1936" selection-end="1936" vertical-scroll-proportion="-16.44">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/MockRequestResponderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="89" selection-end="89" vertical-scroll-proportion="-1.2">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/MockRequestHandlerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="165" selection-end="165" vertical-scroll-proportion="-4.2">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ClojureParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="45" selection-start="570" selection-end="570" vertical-scroll-proportion="-13.2">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ClojureParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="19" selection-start="96" selection-end="96" vertical-scroll-proportion="0.09127789">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1220,6 +1313,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>org.clojure:clojure:1.5.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
