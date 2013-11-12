@@ -32,4 +32,29 @@ public class ClojureInvoker {
         Object status = gameOverStatus.invoke(board);
         return status;
     }
+
+    public Object winnerOnBoard(ArrayList board) {
+        setUpClojureEnv();
+        Var winnerStatus = RT.var("clojure-ttt.board", "winner?");
+        Object status = winnerStatus.invoke(board);
+        return status;
+    }
+
+    public Object getWinningPiece(ArrayList board) {
+        setUpClojureEnv();
+        Var getWinningPiece = RT.var("clojure-ttt.board", "winning-piece");
+        Object winningPiece = getWinningPiece.invoke(board);
+        return winningPiece;
+
+    }
+
+    public Object getAiMove(ArrayList board) {
+        loadClojure();
+        Var require = RT.var("clojure.core", "require");
+        require.invoke(Symbol.create("clojure-ttt.ai"));
+        Var boardWithAiMove = RT.var("clojure-ttt.ai", "board-with-ai-move");
+
+        Object aiMove = boardWithAiMove.invoke(board);
+        return aiMove;
+    }
 }

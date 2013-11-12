@@ -3,7 +3,7 @@ import java.util.List;
 
 
 
-public class TTTPresenter {
+public class ClojureTTTPresenter {
     public ArrayList convertSquareToHtml(ArrayList board) {
         ArrayList htmlBoardWithIndex = new ArrayList();
         int numberOfSquares = board.size();
@@ -47,7 +47,7 @@ public class TTTPresenter {
         return "<tr>" + page + "</tr>";
     }
 
-    public String boardAsHtml(ArrayList board) {
+    public String displayHtmlBoard(ArrayList board) {
         String boardAsHtml =
             wrapInHtml(
             wrapInPlayGameForm(

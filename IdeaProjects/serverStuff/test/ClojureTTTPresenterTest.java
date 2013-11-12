@@ -5,29 +5,29 @@ import java.util.ArrayList;
 
 import static junit.framework.Assert.assertEquals;
 
-public class TTTPresenterTest {
-    private TTTPresenter tttPresenter;
+public class ClojureTTTPresenterTest {
+    private ClojureTTTPresenter clojureTttPresenter;
     private String page;
 
     @Before
     public void initObjects(){
-        tttPresenter = new TTTPresenter();
+        clojureTttPresenter = new ClojureTTTPresenter();
         page = "hello";
     }
 
     @Test
     public void testWrapsHtmlTags() {
-        assertEquals("<html>hello</html>", tttPresenter.wrapInHtml(page));
+        assertEquals("<html>hello</html>", clojureTttPresenter.wrapInHtml(page));
     }
 
     @Test
     public void testWrapsFormToPlayGame() {
-        assertEquals("<form action='/play_game' method='POST'>hello</form>", tttPresenter.wrapInPlayGameForm(page));
+        assertEquals("<form action='/play_game' method='POST'>hello</form>", clojureTttPresenter.wrapInPlayGameForm(page));
     }
 
     @Test
     public void testWrapsRowInTableRow() {
-        assertEquals("<tr>hello</tr>", tttPresenter.wrapRowInHtmlTags(page));
+        assertEquals("<tr>hello</tr>", clojureTttPresenter.wrapRowInHtmlTags(page));
     }
 
     @Test
@@ -42,7 +42,7 @@ public class TTTPresenterTest {
         rows.add(7);
         rows.add(8);
         rows.add(9);
-        assertEquals("<tr>123</tr><tr>456</tr><tr>789</tr>", tttPresenter.wrapEachRowInHtml(rows));
+        assertEquals("<tr>123</tr><tr>456</tr><tr>789</tr>", clojureTttPresenter.wrapEachRowInHtml(rows));
     }
 
     @Test
@@ -57,7 +57,7 @@ public class TTTPresenterTest {
                 "</form>" +
                 "</td>");
 
-        assertEquals(convertedSquare, tttPresenter.convertSquareToHtml(squareContents));
+        assertEquals(convertedSquare, clojureTttPresenter.convertSquareToHtml(squareContents));
     }
 
     @Test
@@ -130,6 +130,6 @@ public class TTTPresenterTest {
                 "</form>" +
                 "</html>";
 
-        assertEquals(boardAsHtml, tttPresenter.boardAsHtml(board));
+        assertEquals(boardAsHtml, clojureTttPresenter.displayHtmlBoard(board));
     }
 }
