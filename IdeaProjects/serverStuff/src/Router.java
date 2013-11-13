@@ -43,12 +43,13 @@ public class Router {
         } else if ((method.equals("PUT") || method.equals("POST")) && unModifiableRoutes.contains(route)) {
             response = responseHolder.methodNotAllowedResponse();
         } else if (method.equals("GET") && route.equals("/ttt")) {
-            ArrayList board = new ArrayList();
+
+            ArrayList board =  new ArrayList();
             board.add(1);
             board.add(2);
             board.add(3);
             board.add(4);
-            board.add(5);
+            board.add("x");
             board.add(6);
             board.add(7);
             board.add(8);

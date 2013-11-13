@@ -81,7 +81,7 @@ public class ClojureInvokerTest {
         board.add(7);
         board.add(8);
         board.add("x");
-        Object aiMove = clojureInvoker.getAiMove(board);
+        Object aiMove = clojureInvoker.getBoardWithAiMove(board);
 
         board.set(1, "o");
         assertEquals(board, aiMove);

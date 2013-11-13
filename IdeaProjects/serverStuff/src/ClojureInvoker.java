@@ -54,7 +54,7 @@ public class ClojureInvoker {
 
     }
 
-    public Object getAiMove(ArrayList board) {
+    public Object getBoardWithAiMove(ArrayList board) {
         loadClojure();
         setUpClojureAi();
         Var boardWithAiMove = RT.var("clojure-ttt.ai", "board-with-ai-move");

@@ -137,7 +137,7 @@ public class RequestHandlerTest {
         HashMap response = requestHandler.respondToRequest();
         byte[] byteResponse = (byte[]) response.get("message");
 
-        assertArrayEquals("HTTP/1.1 200 OK\r\n\r\n<a href='file1'>file1</a><a href='file2'>file2</a><a href='image.gif'>image.gif</a><a href='image.jpeg'>image.jpeg</a><a href='image.png'>image.png</a><a href='text-file.txt'>text-file.txt</a><a href='partial_content.txt'>partial_content.txt</a>".
+        assertArrayEquals("HTTP/1.1 200 OK\r\n\r\n<p><a href='ttt'>Play Tic Tac Toe</a></p><a href='file1'>file1</a><p><a href='file2'>file2</a></p><a href='image.gif'>image.gif</a><a href='image.jpeg'>image.jpeg</a><a href='image.png'>image.png</a><a href='text-file.txt'>text-file.txt</a><a href='partial_content.txt'>partial_content.txt</a>".
                 getBytes(), byteResponse);
 
     }
@@ -166,7 +166,7 @@ public class RequestHandlerTest {
 
         Object header = response.get("message");
 
-        assertEquals("HTTP/1.1 200 OK\r\n\r\n<a href='file1'>file1</a><a href='file2'>file2</a><a href='image.gif'>image.gif</a><a href='image.jpeg'>image.jpeg</a><a href='image.png'>image.png</a><a href='text-file.txt'>text-file.txt</a><a href='partial_content.txt'>partial_content.txt</a>", (new String((byte[]) header)));
+        assertEquals("HTTP/1.1 200 OK\r\n\r\n<p><a href='ttt'>Play Tic Tac Toe</a></p><a href='file1'>file1</a><p><a href='file2'>file2</a></p><a href='image.gif'>image.gif</a><a href='image.jpeg'>image.jpeg</a><a href='image.png'>image.png</a><a href='text-file.txt'>text-file.txt</a><a href='partial_content.txt'>partial_content.txt</a>", (new String((byte[]) header)));
 
     }
 
