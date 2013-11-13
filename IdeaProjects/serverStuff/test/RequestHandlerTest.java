@@ -192,23 +192,6 @@ public class RequestHandlerTest {
 
     }
 
-//    @Test
-//    public void testPutsBodyFromStateIntoBodyVariable() throws IOException {
-//        String message =    "GET /form HTTP/1.1\n" +
-//                            "Host: localhost:5000\r\n\r\n";
-//
-//
-//        BufferedReader bufferedReader = new BufferedReader(new StringReader(message));
-//        HashMap state = new HashMap();
-//        state.put("state", "hello".getBytes());
-//
-//        RequestHandler requestHandler = new RequestHandler(bufferedReader, state);
-//
-//        requestHandler.respondToRequest();
-//
-//        assertArrayEquals("hello".getBytes(), requestHandler.getBody());
-//    }
-
     @Test
     public void testParsesQueryString() throws IOException {
         String request = "GET /parameters?variable_1=Operators%20%3C HTTP/1.1";

@@ -82,8 +82,28 @@ public class ClojureInvokerTest {
         board.add(8);
         board.add("x");
         Object aiMove = clojureInvoker.getAiMove(board);
-        assertEquals(2, aiMove);
 
+        board.set(1, "o");
+        assertEquals(board, aiMove);
+    }
+
+    @Test
+    public void testPlacesPieceOnBoard() {
+        ClojureInvoker clojureInvoker = new ClojureInvoker();
+        ArrayList board = new ArrayList();
+        board.add(1);
+        board.add(2);
+        board.add(3);
+        board.add(4);
+        board.add(5);
+        board.add(6);
+        board.add(7);
+        board.add(8);
+        board.add(9);
+
+        Object placedPiece = clojureInvoker.placePiece(3, board);
+        board.set(2, "x");
+        assertEquals(board, placedPiece);
 
     }
 }

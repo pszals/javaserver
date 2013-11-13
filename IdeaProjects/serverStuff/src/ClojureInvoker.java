@@ -1,3 +1,4 @@
+import clojure.lang.PersistentVector;
 import clojure.lang.RT;
 import clojure.lang.Symbol;
 import clojure.lang.Var;
@@ -16,32 +17,37 @@ public class ClojureInvoker {
         }
     }
 
-    public static void requireClojureTTT() {
+    public static void setUpTTTBoard() {
         Var require = RT.var("clojure.core", "require");
         require.invoke(Symbol.create("clojure-ttt.board"));
     }
 
-    public static void setUpClojureEnv() {
+    public static void setUpClojureAi() {
+        Var require = RT.var("clojure.core", "require");
+        require.invoke(Symbol.create("clojure-ttt.ai"));
+    }
+
+    public static void setUpClojureBoard() {
         loadClojure();
-        requireClojureTTT();
+        setUpTTTBoard();
     }
 
     public Object gameOver(ArrayList board) throws IOException {
-        setUpClojureEnv();
+        setUpClojureBoard();
         Var gameOverStatus = RT.var("clojure-ttt.board", "game-over?");
         Object status = gameOverStatus.invoke(board);
         return status;
     }
 
     public Object winnerOnBoard(ArrayList board) {
-        setUpClojureEnv();
+        setUpClojureBoard();
         Var winnerStatus = RT.var("clojure-ttt.board", "winner?");
         Object status = winnerStatus.invoke(board);
         return status;
     }
 
     public Object getWinningPiece(ArrayList board) {
-        setUpClojureEnv();
+        setUpClojureBoard();
         Var getWinningPiece = RT.var("clojure-ttt.board", "winning-piece");
         Object winningPiece = getWinningPiece.invoke(board);
         return winningPiece;
@@ -50,11 +56,17 @@ public class ClojureInvoker {
 
     public Object getAiMove(ArrayList board) {
         loadClojure();
-        Var require = RT.var("clojure.core", "require");
-        require.invoke(Symbol.create("clojure-ttt.ai"));
+        setUpClojureAi();
         Var boardWithAiMove = RT.var("clojure-ttt.ai", "board-with-ai-move");
-
-        Object aiMove = boardWithAiMove.invoke(board);
+        Object aiMove = boardWithAiMove.invoke(PersistentVector.create(board));
         return aiMove;
+    }
+
+    public Object placePiece(int i, ArrayList board) {
+        loadClojure();
+        setUpClojureBoard();
+        Var setPiece = RT.var("clojure-ttt.board", "place-piece");
+        Object boardWithPlacedPiece = setPiece.invoke(i, "x", PersistentVector.create(board));
+        return boardWithPlacedPiece;
     }
 }

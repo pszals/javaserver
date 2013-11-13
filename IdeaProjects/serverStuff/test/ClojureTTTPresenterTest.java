@@ -21,6 +21,11 @@ public class ClojureTTTPresenterTest {
     }
 
     @Test
+    public void testWrapsInTableTags() {
+        assertEquals("<table>hello</table>", clojureTttPresenter.wrapInTableTags(page));
+    }
+
+    @Test
     public void testWrapsFormToPlayGame() {
         assertEquals("<form action='/play_game' method='POST'>hello</form>", clojureTttPresenter.wrapInPlayGameForm(page));
     }
@@ -76,6 +81,7 @@ public class ClojureTTTPresenterTest {
         String boardAsHtml = "" +
                 "<html>" +
                 "<form action='/play_game' method='POST'>" +
+                "<table>" +
                 "<tr>" +
                 "<td id=0>" +
                 "<form action='/play_game' method='POST'>" +
@@ -127,6 +133,7 @@ public class ClojureTTTPresenterTest {
                 "</form>" +
                 "</td>" +
                 "</tr>" +
+                "</table>" +
                 "</form>" +
                 "</html>";
 

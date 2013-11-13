@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,6 +42,18 @@ public class Router {
 
         } else if ((method.equals("PUT") || method.equals("POST")) && unModifiableRoutes.contains(route)) {
             response = responseHolder.methodNotAllowedResponse();
+        } else if (method.equals("GET") && route.equals("/ttt")) {
+            ArrayList board = new ArrayList();
+            board.add(1);
+            board.add(2);
+            board.add(3);
+            board.add(4);
+            board.add(5);
+            board.add(6);
+            board.add(7);
+            board.add(8);
+            board.add(9);
+            response = responseHolder.tttHome(board);
 
         } else {
             response = responseHolder.notFoundResponse();

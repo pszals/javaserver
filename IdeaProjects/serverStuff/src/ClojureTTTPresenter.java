@@ -51,8 +51,13 @@ public class ClojureTTTPresenter {
         String boardAsHtml =
             wrapInHtml(
             wrapInPlayGameForm(
+            wrapInTableTags(
             wrapEachRowInHtml(
-            convertSquareToHtml(board))));
+            convertSquareToHtml(board)))));
         return boardAsHtml;
+    }
+
+    public String wrapInTableTags(String page) {
+        return "<table>" + page + "</table>";
     }
 }
