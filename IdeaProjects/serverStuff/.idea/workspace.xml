@@ -79,8 +79,8 @@
     <file path="/ClojureBoardHolder.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384399947768" ignored="false" />
     <file path="/ClojureBoardParserTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384452782073" ignored="false" />
     <file path="/ClojureBoardParser.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384455858551" ignored="false" />
-    <file path="/ClojureTTTGameResponderTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384449240932" ignored="false" />
-    <file path="/ClojureTTTGameResponder.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384455789100" ignored="false" />
+    <file path="/ClojureTTTGameResponderTest.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384456611988" ignored="false" />
+    <file path="/ClojureTTTGameResponder.java" changelist="cca49707-7597-45cc-924c-a59b4b322b49" time="1384456360174" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,10 +192,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClojureTTTGameResponder.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ClojureTTTGameResponder.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ClojureTTTGameResponder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="846" selection-end="846" vertical-scroll-proportion="0.5487805">
+            <state line="25" column="21" selection-start="1180" selection-end="1180" vertical-scroll-proportion="-15.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -225,22 +225,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClojureTTTGameResponderTest.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ClojureTTTGameResponderTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/ClojureTTTGameResponderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="19" selection-start="720" selection-end="720" vertical-scroll-proportion="-10.8">
+            <state line="32" column="0" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.7160752">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestHandlerTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/RequestHandlerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="13" selection-start="257" selection-end="257" vertical-scroll-proportion="42.92">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -267,10 +258,10 @@
         <option value="$PROJECT_DIR$/test/ClojureBoardHolderTest.java" />
         <option value="$PROJECT_DIR$/src/Router.java" />
         <option value="$PROJECT_DIR$/src/ClojureInvoker.java" />
-        <option value="$PROJECT_DIR$/test/ClojureTTTGameResponderTest.java" />
         <option value="$PROJECT_DIR$/test/ClojureBoardParserTest.java" />
         <option value="$PROJECT_DIR$/src/ClojureBoardParser.java" />
         <option value="$PROJECT_DIR$/src/ClojureTTTGameResponder.java" />
+        <option value="$PROJECT_DIR$/test/ClojureTTTGameResponderTest.java" />
       </list>
     </option>
   </component>
@@ -1276,13 +1267,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/QueryStringParserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="135" selection-end="135" vertical-scroll-proportion="0.09146342">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/QueryStringParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="13" selection-start="87" selection-end="87" vertical-scroll-proportion="0.06097561">
@@ -1336,13 +1320,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/RequestHandlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="257" selection-end="257" vertical-scroll-proportion="42.92">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ClojureBoardHolder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="13" selection-start="70" selection-end="70" vertical-scroll-proportion="7.84">
@@ -1352,27 +1329,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ClojureInvoker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="49" selection-start="2134" selection-end="2134" vertical-scroll-proportion="-13.68">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ClojureTTTPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="13" selection-start="67" selection-end="67" vertical-scroll-proportion="0.15243903">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ClojureTTTGameResponderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="19" selection-start="720" selection-end="720" vertical-scroll-proportion="-10.8">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1397,9 +1356,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ClojureInvoker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="49" selection-start="2134" selection-end="2134" vertical-scroll-proportion="-13.68">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ClojureTTTGameResponder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="846" selection-end="846" vertical-scroll-proportion="0.5487805">
+        <state line="25" column="21" selection-start="1180" selection-end="1180" vertical-scroll-proportion="-15.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/RouterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="167" selection-end="167" vertical-scroll-proportion="-1.7557411">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/RequestHandlerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="257" selection-end="257" vertical-scroll-proportion="0.06263048">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ClojureTTTGameResponderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.7160752">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

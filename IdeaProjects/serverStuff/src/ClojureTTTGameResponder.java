@@ -19,4 +19,10 @@ public class ClojureTTTGameResponder {
             boardHolder.recordBoardState(arrayBoard);
         }
     }
+
+    public void resetBoard() throws IOException {
+        String blankBoard = "123456789";
+        MyFileWriter myFileWriter = new MyFileWriter("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/serverData/clojureTTTboard.txt");
+        myFileWriter.write(blankBoard);
+    }
 }
