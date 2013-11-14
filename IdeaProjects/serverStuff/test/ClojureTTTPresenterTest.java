@@ -53,22 +53,35 @@ public class ClojureTTTPresenterTest {
     @Test
     public void testMakesTableDataFromBoardArrayList() {
         ArrayList convertedSquare = new ArrayList();
-        ArrayList squareContents = new ArrayList();
-        squareContents.add(1);
+        ArrayList rawSquare = new ArrayList();
+        rawSquare.add(1);
+
         convertedSquare.add(
                 "<td id=0>" +
-                "<form action='/play_game' method='POST'>" +
-                "<input type='submit' name='square' value=1>" +
-                "</form>" +
-                "</td>");
+                        "<form action='/play_game' method='POST'>" +
+                        "<input type='submit' name='square' value=1>" +
+                        "</form>" +
+                        "</td>");
 
-        assertEquals(convertedSquare, clojureTttPresenter.convertSquareToHtml(squareContents));
+        assertEquals(convertedSquare, clojureTttPresenter.convertSquaresToHtml(rawSquare));
+
+        rawSquare.set(0, "o");
+
+        convertedSquare.set(0,
+                "<td id=0>" +
+                        "<form action='/play_game' method='POST'>" +
+                        "<input type='submit' name='square' value=o>" +
+                        "</form>" +
+                        "</td>");
+        assertEquals(convertedSquare, clojureTttPresenter.convertSquaresToHtml(rawSquare));
+
+
     }
 
     @Test
     public void testDisplaysWholeBoard() {
         ArrayList board = new ArrayList();
-        board.add("x");
+        board.add(1);
         board.add(2);
         board.add(3);
         board.add(4);
@@ -85,7 +98,7 @@ public class ClojureTTTPresenterTest {
                 "<tr>" +
                 "<td id=0>" +
                 "<form action='/play_game' method='POST'>" +
-                "<input type='submit' name='square' value=x>" +
+                "<input type='submit' name='square' value=1>" +
                 "</form>" +
                 "</td>" +
                 "<td id=1>" +

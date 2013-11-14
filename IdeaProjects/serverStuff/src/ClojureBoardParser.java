@@ -3,15 +3,15 @@ import java.util.ArrayList;
 import static java.lang.Character.getNumericValue;
 
 public class ClojureBoardParser {
-    public ArrayList parseStringBoard(String board) {
+    public ArrayList convertStringToBoardArray(String board) {
         ArrayList parsedBoard = new ArrayList();
 
         for (int i = 0; i < board.length(); i++) {
             char c = board.charAt(i);
-            int charValue = getNumericValue(c);
-            if (charValue > 0 && charValue < 10) {
-                int value = getNumericValue(c);
-                parsedBoard.add(value);
+            int numericValueOfChar = getNumericValue(c);
+
+            if (numericValueOfChar > 0 && numericValueOfChar < 10) {
+                parsedBoard.add(numericValueOfChar);
             } else {
                 String value = Character.toString(c);
                 parsedBoard.add(value);
@@ -19,5 +19,13 @@ public class ClojureBoardParser {
         }
 
         return parsedBoard;
+    }
+
+    public static String convertBoardToString(ArrayList board) {
+        String stringBoard = "";
+        for (int i = 0; i < board.size(); i++) {
+            stringBoard += board.get(i).toString();
+        }
+        return stringBoard;
     }
 }

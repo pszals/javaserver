@@ -4,7 +4,8 @@ import java.util.List;
 
 
 public class ClojureTTTPresenter {
-    public ArrayList convertSquareToHtml(ArrayList board) {
+
+     public ArrayList convertSquaresToHtml(ArrayList board) {
         ArrayList htmlBoardWithIndex = new ArrayList();
         int numberOfSquares = board.size();
         for (int index = 0; index < numberOfSquares; index += 1) {
@@ -49,11 +50,11 @@ public class ClojureTTTPresenter {
 
     public String displayHtmlBoard(ArrayList board) {
         String boardAsHtml =
-            wrapInHtml(
-            wrapInPlayGameForm(
-            wrapInTableTags(
-            wrapEachRowInHtml(
-            convertSquareToHtml(board)))));
+                wrapInHtml(
+                        wrapInPlayGameForm(
+                                wrapInTableTags(
+                                        wrapEachRowInHtml(
+                                                convertSquaresToHtml(board)))));
         return boardAsHtml;
     }
 
