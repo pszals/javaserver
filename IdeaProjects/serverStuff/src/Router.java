@@ -44,28 +44,28 @@ public class Router {
             response = responseHolder.methodNotAllowedResponse();
         } else if (method.equals("GET") && route.equals("/ttt")) {
 
-            ArrayList board =  new ArrayList();
-            board.add(1);
-            board.add(2);
-            board.add(3);
-            board.add(4);
-            board.add("x");
-            board.add(6);
-            board.add(7);
-            board.add(8);
-            board.add(9);
-
+            ArrayList board;
+            ClojureBoardParser parser = new ClojureBoardParser();
+            ClojureBoardHolder holder = new ClojureBoardHolder();
+            String stringBoard = holder.readBoardStateFile();
+            board = parser.convertStringToBoardArray(stringBoard);
             response = responseHolder.tttHome(board);
 
         } else if (method.equals("POST") && route.equals("/play_game") ) {
             String bodyString = new String(body, "utf-8");
             String lastChar = bodyString.substring(bodyString.length() - 1);
+            ClojureTTTGameRunner runner = new ClojureTTTGameRunner();
+            runner.placePiece(lastChar);
 
+            response = responseHolder.keepPlayingResponse();
 
-            System.out.println("Square contents are this character: " + lastChar);
-            response = "you posted this".getBytes();
+        } else if (method.equals("POST") && route.equals("/reset") ) {
+            ClojureBoardHolder holder = new ClojureBoardHolder();
+            holder.resetBoard();
 
-        } else {
+            response = responseHolder.keepPlayingResponse();
+        }
+        else {
             response = responseHolder.notFoundResponse();
         }
         return response;

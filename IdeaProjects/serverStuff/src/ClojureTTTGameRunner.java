@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ClojureTTTGameResponder {
+public class ClojureTTTGameRunner {
 
     public void placePiece(String move) throws IOException {
         ClojureBoardHolder boardHolder = new ClojureBoardHolder();
@@ -17,12 +17,13 @@ public class ClojureTTTGameResponder {
 
             arrayBoard = boardParser.convertStringToBoardArray(stringBoard);
             boardHolder.recordBoardState(arrayBoard);
-        }
-    }
 
-    public void resetBoard() throws IOException {
-        String blankBoard = "123456789";
-        MyFileWriter myFileWriter = new MyFileWriter("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/serverData/clojureTTTboard.txt");
-        myFileWriter.write(blankBoard);
+            if (clojureTTT.gameOver(arrayBoard).equals(false)) {
+                Object aiBoard = clojureTTT.getBoardWithAiMove(arrayBoard);
+                stringBoard = boardParser.formatPVBoard(aiBoard.toString());
+                arrayBoard = boardParser.convertStringToBoardArray(stringBoard);
+                boardHolder.recordBoardState(arrayBoard);
+            }
+        }
     }
 }

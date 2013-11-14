@@ -51,14 +51,21 @@ public class ClojureTTTPresenter {
     public String displayHtmlBoard(ArrayList board) {
         String boardAsHtml =
                 wrapInHtml(
+                        wrapInResetBoard(
                         wrapInPlayGameForm(
                                 wrapInTableTags(
                                         wrapEachRowInHtml(
-                                                convertSquaresToHtml(board)))));
+                                                convertSquaresToHtml(board))))));
         return boardAsHtml;
     }
 
     public String wrapInTableTags(String page) {
         return "<table>" + page + "</table>";
+    }
+
+    public String wrapInResetBoard(String page) {
+        return page + "<form action='/reset' method='POST'>" +
+                "<input type='submit' name='reset' value=Reset>" +
+                "</form>";
     }
 }

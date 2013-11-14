@@ -29,6 +29,12 @@ public class ResponseHolder {
         return response;
     }
 
+    public byte[] keepPlayingResponse() {
+        byte[] response;
+        response = "HTTP/1.1 301 Permanently Moved\r\nLocation: http://localhost:5000/ttt".getBytes();
+        return response;
+    }
+
     byte[] readFileResponse(String route, ResponseBuilder responseBuilder) throws IOException {
         byte[] response;
         MyFileReader myFileReader = new MyFileReader("cob_spec/public" + route);

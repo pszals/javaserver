@@ -31,6 +31,11 @@ public class ClojureTTTPresenterTest {
     }
 
     @Test
+    public void testAddsResetBoardButton() {
+        assertEquals("hello<form action='/reset' method='POST'><input type='submit' name='reset' value=Reset></form>", clojureTttPresenter.wrapInResetBoard(page));
+    }
+
+    @Test
     public void testWrapsRowInTableRow() {
         assertEquals("<tr>hello</tr>", clojureTttPresenter.wrapRowInHtmlTags(page));
     }
@@ -148,6 +153,7 @@ public class ClojureTTTPresenterTest {
                 "</tr>" +
                 "</table>" +
                 "</form>" +
+                "<form action='/reset' method='POST'><input type='submit' name='reset' value=Reset></form>" +
                 "</html>";
 
         assertEquals(boardAsHtml, clojureTttPresenter.displayHtmlBoard(board));

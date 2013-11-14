@@ -10,24 +10,6 @@ public class ClojureBoardHolderTest {
     private ClojureBoardHolder boardHolder = new ClojureBoardHolder();
 
     @Test
-    public void testCreatesBlankBoard() {
-        boardHolder.resetBoard();
-        ArrayList board = boardHolder.getBoard();
-        ArrayList newBoard = blankBoard();
-
-        assertEquals(newBoard, board);
-    }
-
-    @Test
-    public void testPlacesPiece() {
-        ArrayList board = blankBoard();
-        board.set(0, "x");
-        boardHolder.resetBoard();
-        boardHolder.placePiece(1);
-        assertEquals(board, boardHolder.getBoard());
-    }
-
-    @Test
     public void testWritesBoardStateToFile() throws IOException {
         MyFileReader myFileReader = new MyFileReader("serverData/clojureTTTboard.txt");
         ArrayList board = blankBoard();
@@ -48,5 +30,19 @@ public class ClojureBoardHolderTest {
             board.add(x);
         }
         return board;
+    }
+
+    @Test
+    public void testResetsGameState() throws IOException {
+        ClojureBoardHolder holder = new ClojureBoardHolder();
+        String blankBoard = "123456789";
+        String fullBoard = "xoxoxooox";
+        MyFileWriter myFileWriter = new MyFileWriter("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/serverData/clojureTTTboard.txt");
+        myFileWriter.write(fullBoard);
+        MyFileReader myFileReader = new MyFileReader("serverData/clojureTTTboard.txt");
+        holder.resetBoard();
+        String resettedBoard = new String(myFileReader.readFileContents());
+
+        assert(resettedBoard.equals(blankBoard));
     }
 }

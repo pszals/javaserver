@@ -25,6 +25,11 @@ public class RouterTest {
         route = "/redirect";
         assertArrayEquals("HTTP/1.1 301 Permanently Moved\r\nLocation: http://localhost:5000/".getBytes(), router.respondToRouteRequest(method, route, body));
 
+        body = "square: 3".getBytes();
+        method = "POST";
+        route = "/play_game";
+        assertArrayEquals("HTTP/1.1 301 Permanently Moved\r\nLocation: http://localhost:5000/ttt".getBytes(), router.respondToRouteRequest(method, route, body));
+
         method = "POST";
         route = "/form";
         body = "'MY'='DATA'".getBytes();
