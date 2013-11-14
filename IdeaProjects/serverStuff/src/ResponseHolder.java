@@ -88,7 +88,7 @@ public class ResponseHolder {
         return response;
     }
 
-    byte[] tttHome(ArrayList board) {
+    byte[] tttHome(ArrayList board) throws IOException {
         byte[] response;
         ClojureTTTPresenter presenter = new ClojureTTTPresenter();
         response = presenter.displayHtmlBoard(board).getBytes();

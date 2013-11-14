@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class ClojureTTTPresenter {
         return "<tr>" + page + "</tr>";
     }
 
-    public String displayHtmlBoard(ArrayList board) {
+    public String displayHtmlBoard(ArrayList board) throws IOException {
         String boardAsHtml =
                 wrapInHtml(
                         wrapInResetBoard(
@@ -56,6 +57,9 @@ public class ClojureTTTPresenter {
                                 wrapInTableTags(
                                         wrapEachRowInHtml(
                                                 convertSquaresToHtml(board))))));
+        ClojureInvoker game = new ClojureInvoker();
+        if (game.gameOver(board).equals(true))
+            boardAsHtml = addMessage(boardAsHtml);
         return boardAsHtml;
     }
 
@@ -67,5 +71,9 @@ public class ClojureTTTPresenter {
         return page + "<form action='/reset' method='POST'>" +
                 "<input type='submit' name='reset' value=Reset>" +
                 "</form>";
+    }
+
+    public String addMessage(String page) {
+        return "<p>GAME OVER</p>" + page;
     }
 }

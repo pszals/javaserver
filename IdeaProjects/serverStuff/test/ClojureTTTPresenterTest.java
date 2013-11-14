@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static junit.framework.Assert.assertEquals;
@@ -38,6 +39,11 @@ public class ClojureTTTPresenterTest {
     @Test
     public void testWrapsRowInTableRow() {
         assertEquals("<tr>hello</tr>", clojureTttPresenter.wrapRowInHtmlTags(page));
+    }
+
+    @Test
+    public void testAddsGameStatusMessage() {
+        assertEquals("<p>GAME OVER</p>hello", clojureTttPresenter.addMessage(page));
     }
 
     @Test
@@ -84,7 +90,7 @@ public class ClojureTTTPresenterTest {
     }
 
     @Test
-    public void testDisplaysWholeBoard() {
+    public void testDisplaysWholeBoard() throws IOException {
         ArrayList board = new ArrayList();
         board.add(1);
         board.add(2);

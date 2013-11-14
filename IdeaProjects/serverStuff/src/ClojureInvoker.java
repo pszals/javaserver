@@ -63,7 +63,6 @@ public class ClojureInvoker {
     }
 
     public Object placePiece(int i, ArrayList board) {
-        loadClojure();
         setUpClojureBoard();
         Var setPiece = RT.var("clojure-ttt.board", "place-piece");
         Object boardWithPlacedPiece = setPiece.invoke(i, "x", PersistentVector.create(board));

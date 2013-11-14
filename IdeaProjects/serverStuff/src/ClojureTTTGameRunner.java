@@ -10,7 +10,7 @@ public class ClojureTTTGameRunner {
         String currentBoard = boardHolder.readBoardStateFile();
         ArrayList arrayBoard = boardParser.convertStringToBoardArray(currentBoard);
 
-        if (!move.equals("x") || !move.equals("o")) {
+        if ((!move.equals("x") || !move.equals("o")) && clojureTTT.gameOver(arrayBoard).equals(false)) {
             int intMove = Integer.parseInt(move);
             Object newArrayBoard = clojureTTT.placePiece(intMove, arrayBoard);
             String stringBoard = boardParser.formatPVBoard(newArrayBoard.toString());

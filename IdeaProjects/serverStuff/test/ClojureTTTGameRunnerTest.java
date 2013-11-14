@@ -6,8 +6,10 @@ public class ClojureTTTGameRunnerTest {
     @Test
     public void testPlacesMoveOnBoard() throws IOException {
         ClojureTTTGameRunner responder = new ClojureTTTGameRunner();
-        String move = "3";
-        String board = "123456789";
+        ClojureBoardHolder holder = new ClojureBoardHolder();
+        holder.resetBoard();
+        String move = "9";
+        String board = "x234o6789";
         MyFileWriter myFileWriter = new MyFileWriter("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/serverData/clojureTTTboard.txt");
         myFileWriter.write(board);
 
@@ -16,7 +18,7 @@ public class ClojureTTTGameRunnerTest {
         MyFileReader myFileReader = new MyFileReader("serverData/clojureTTTboard.txt");
         String boardString = new String(myFileReader.readFileContents(), "UTF-8");
 
-        assert("12x456789".equals(boardString));
+        assert("xo34o678x".equals(boardString));
     }
 
 }
