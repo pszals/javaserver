@@ -38,4 +38,11 @@ public class ClojureBoardParserTest {
         stringBoard = ClojureBoardParser.convertBoardToString(board);
         assertTrue(stringBoard.equals("x23456789"));
     }
+
+    @Test
+    public void testRemovesBracketsAndWhiteSpaceFromBoard() {
+        String persistentVectorBoard = "[1 2 \"x\" 4 5 6 7 8 9]";
+        String convertedBoard = ClojureBoardParser.formatPVBoard(persistentVectorBoard);
+        assert("12x456789".equals(convertedBoard));
+    }
 }

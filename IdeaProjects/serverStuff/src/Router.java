@@ -54,7 +54,16 @@ public class Router {
             board.add(7);
             board.add(8);
             board.add(9);
+
             response = responseHolder.tttHome(board);
+
+        } else if (method.equals("POST") && route.equals("/play_game") ) {
+            String bodyString = new String(body, "utf-8");
+            String lastChar = bodyString.substring(bodyString.length() - 1);
+
+
+            System.out.println("Square contents are this character: " + lastChar);
+            response = "you posted this".getBytes();
 
         } else {
             response = responseHolder.notFoundResponse();

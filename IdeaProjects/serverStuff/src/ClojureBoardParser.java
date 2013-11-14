@@ -28,4 +28,9 @@ public class ClojureBoardParser {
         }
         return stringBoard;
     }
+
+    public static String formatPVBoard(String persistentVectorBoard) {
+        String removedBrackets = persistentVectorBoard.substring(1, persistentVectorBoard.length() - 1);
+        return removedBrackets.replaceAll("\\s+","").replaceAll("\"+", "");
+    }
 }
