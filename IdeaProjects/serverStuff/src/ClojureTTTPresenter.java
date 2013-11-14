@@ -41,8 +41,15 @@ public class ClojureTTTPresenter {
         return "<form action='/play_game' method='POST'>" + page + "</form>";
     }
 
-    public String wrapInHtml(String page) {
-        return "<html>" + page + "</html>";
+    public String wrapInHtmlHead(String page) {
+        return "<html>" +
+        "<head>" +
+        "<meta charset=\"utf-8\" />" +
+        "<title>Tic Tac Toe</title>" +
+        "<link rel=\"stylesheet\" type=\"text/css\" href=\"tictac.css\" />" +
+        "</head>" +
+        "<body id=\"home\"" +
+        page + "</html>";
     }
 
     public String wrapRowInHtmlTags(String page) {
@@ -51,12 +58,12 @@ public class ClojureTTTPresenter {
 
     public String displayHtmlBoard(ArrayList board) throws IOException {
         String boardAsHtml =
-                wrapInHtml(
-                        wrapInResetBoard(
-                        wrapInPlayGameForm(
-                                wrapInTableTags(
-                                        wrapEachRowInHtml(
-                                                convertSquaresToHtml(board))))));
+            wrapInHtmlHead(
+                    wrapInResetBoard(
+                            wrapInPlayGameForm(
+                                    wrapInTableTags(
+                                            wrapEachRowInHtml(
+                                                    convertSquaresToHtml(board))))));
         ClojureInvoker game = new ClojureInvoker();
         if (game.gameOver(board).equals(true))
             boardAsHtml = addMessage(boardAsHtml);
@@ -64,7 +71,7 @@ public class ClojureTTTPresenter {
     }
 
     public String wrapInTableTags(String page) {
-        return "<table>" + page + "</table>";
+        return "<table id=\"tictac\">" + page + "</table>";
     }
 
     public String wrapInResetBoard(String page) {

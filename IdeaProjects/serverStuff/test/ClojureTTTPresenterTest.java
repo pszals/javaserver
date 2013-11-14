@@ -18,12 +18,18 @@ public class ClojureTTTPresenterTest {
 
     @Test
     public void testWrapsHtmlTags() {
-        assertEquals("<html>hello</html>", clojureTttPresenter.wrapInHtml(page));
+        assertEquals("<html>" +
+                "<head>" +
+                "<meta charset=\"utf-8\" />" +
+                "<title>Tic Tac Toe</title>" +
+                "<link rel=\"stylesheet\" type=\"text/css\" href=\"tictac.css\" />"  +
+                "</head><body id=\"home\"" +
+                "hello</html>", clojureTttPresenter.wrapInHtmlHead(page));
     }
 
     @Test
     public void testWrapsInTableTags() {
-        assertEquals("<table>hello</table>", clojureTttPresenter.wrapInTableTags(page));
+        assertEquals("<table id=\"tictac\">hello</table>", clojureTttPresenter.wrapInTableTags(page));
     }
 
     @Test
@@ -104,8 +110,13 @@ public class ClojureTTTPresenterTest {
 
         String boardAsHtml = "" +
                 "<html>" +
+                "<head>" +
+                "<meta charset=\"utf-8\" />" +
+                "<title>Tic Tac Toe</title>" +
+                "<link rel=\"stylesheet\" type=\"text/css\" href=\"tictac.css\" />"  +
+                "</head><body id=\"home\"" +
                 "<form action='/play_game' method='POST'>" +
-                "<table>" +
+                "<table id=\"tictac\">" +
                 "<tr>" +
                 "<td id=0>" +
                 "<form action='/play_game' method='POST'>" +

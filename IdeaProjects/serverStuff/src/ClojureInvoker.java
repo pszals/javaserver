@@ -7,31 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ClojureInvoker {
-    public static void loadClojure() {
-        try {
-            RT.load("clojure.core");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void setUpTTTBoard() {
-        Var require = RT.var("clojure.core", "require");
-        require.invoke(Symbol.create("clojure-ttt.board"));
-    }
-
-    public static void setUpClojureAi() {
-        Var require = RT.var("clojure.core", "require");
-        require.invoke(Symbol.create("clojure-ttt.ai"));
-    }
-
-    public static void setUpClojureBoard() {
-        loadClojure();
-        setUpTTTBoard();
-    }
-
     public Object gameOver(ArrayList board) throws IOException {
         setUpClojureBoard();
         Var gameOverStatus = RT.var("clojure-ttt.board", "game-over?");
@@ -67,5 +42,30 @@ public class ClojureInvoker {
         Var setPiece = RT.var("clojure-ttt.board", "place-piece");
         Object boardWithPlacedPiece = setPiece.invoke(i, "x", PersistentVector.create(board));
         return boardWithPlacedPiece;
+    }
+
+    public static void loadClojure() {
+        try {
+            RT.load("clojure.core");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void setUpTTTBoard() {
+        Var require = RT.var("clojure.core", "require");
+        require.invoke(Symbol.create("clojure-ttt.board"));
+    }
+
+    public static void setUpClojureAi() {
+        Var require = RT.var("clojure.core", "require");
+        require.invoke(Symbol.create("clojure-ttt.ai"));
+    }
+
+    public static void setUpClojureBoard() {
+        loadClojure();
+        setUpTTTBoard();
     }
 }

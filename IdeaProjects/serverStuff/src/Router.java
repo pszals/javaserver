@@ -8,7 +8,7 @@ public class Router {
     private final ResponseHolder responseHolder = new ResponseHolder();
 
     public byte[] respondToRouteRequest(String method, String route, byte[] body) throws IOException {
-        List<String> routesWithFilesToRead = Arrays.asList("/form", "/file1", "/file1", "/text-file.txt", "/image.jpeg", "/image.gif", "/image.png");
+        List<String> routesWithFilesToRead = Arrays.asList("/form", "/file1", "/file1", "/text-file.txt", "/image.jpeg", "/image.gif", "/image.png", "/tictac.css");
         List<String> unModifiableRoutes = Arrays.asList("/file1", "/file1", "/text-file.txt", "/image.jpeg", "/image.gif", "/image.png");
         byte[] response;
         ResponseBuilder responseBuilder = new ResponseBuilder();
@@ -55,7 +55,7 @@ public class Router {
             String bodyString = new String(body, "utf-8");
             String lastChar = bodyString.substring(bodyString.length() - 1);
             ClojureTTTGameRunner runner = new ClojureTTTGameRunner();
-            runner.placePiece(lastChar);
+            runner.runCycle(lastChar);
 
             response = responseHolder.keepPlayingResponse();
 

@@ -4,8 +4,8 @@ import java.io.IOException;
 
 public class ClojureTTTGameRunnerTest {
     @Test
-    public void testPlacesMoveOnBoard() throws IOException {
-        ClojureTTTGameRunner responder = new ClojureTTTGameRunner();
+    public void testRunsThroughOneCycle() throws IOException {
+        ClojureTTTGameRunner runner = new ClojureTTTGameRunner();
         ClojureBoardHolder holder = new ClojureBoardHolder();
         holder.resetBoard();
         String move = "9";
@@ -13,7 +13,7 @@ public class ClojureTTTGameRunnerTest {
         MyFileWriter myFileWriter = new MyFileWriter("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/serverData/clojureTTTboard.txt");
         myFileWriter.write(board);
 
-        responder.placePiece(move);
+        runner.runCycle(move);
 
         MyFileReader myFileReader = new MyFileReader("serverData/clojureTTTboard.txt");
         String boardString = new String(myFileReader.readFileContents(), "UTF-8");
