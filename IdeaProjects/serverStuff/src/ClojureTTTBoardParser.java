@@ -2,10 +2,9 @@ import java.util.ArrayList;
 
 import static java.lang.Character.getNumericValue;
 
-public class ClojureBoardParser {
+public class ClojureTTTBoardParser {
     public ArrayList convertStringToBoardArray(String board) {
         ArrayList newBoard = new ArrayList();
-
         for (int i = 0; i < board.length(); i++) {
             char valueOfSquare = board.charAt(i);
             int numericValueOfChar = getNumericValue(valueOfSquare);
@@ -17,13 +16,7 @@ public class ClojureBoardParser {
                 newBoard.add(value);
             }
         }
-
         return newBoard;
-    }
-
-    private Boolean squareIsEmpty(char potentialMove, String board){
-        int numericValueOfChar = getNumericValue(potentialMove);
-        return numericValueOfChar < (board.length() + 1);
     }
 
     public static String convertBoardToString(ArrayList board) {
@@ -34,9 +27,14 @@ public class ClojureBoardParser {
         return stringBoard;
     }
 
-    public static String formatPVBoard(String persistentVectorBoard) {
-        String withoutBrackets = removeBrackets(persistentVectorBoard);
+    public static String formatClojureBoard(String persistentVectorBoardAsString) {
+        String withoutBrackets = removeBrackets(persistentVectorBoardAsString);
         return removeSpacesAndQuotes(withoutBrackets);
+    }
+
+    private Boolean squareIsEmpty(char potentialMove, String board){
+        int numericValueOfChar = getNumericValue(potentialMove);
+        return numericValueOfChar < (board.length() + 1);
     }
 
     private static String removeBrackets(String persistentVectorBoard) {

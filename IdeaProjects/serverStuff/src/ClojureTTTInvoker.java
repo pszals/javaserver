@@ -6,7 +6,7 @@ import clojure.lang.Var;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ClojureInvoker {
+public class ClojureTTTInvoker {
     public Object gameOver(ArrayList board) throws IOException {
         setUpClojureBoard();
         Var gameOverStatus = RT.var("clojure-ttt.board", "game-over?");

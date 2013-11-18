@@ -1,10 +1,10 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ClojureBoardHolder {
+public class ClojureTTTBoardHolder {
     public void recordBoardState(ArrayList board) throws IOException {
         MyFileWriter myFileWriter = new MyFileWriter("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/serverData/clojureTTTboard.txt");
-        ClojureBoardParser boardParser = new ClojureBoardParser();
+        ClojureTTTBoardParser boardParser = new ClojureTTTBoardParser();
         String stringBoard = boardParser.convertBoardToString(board);
 
         myFileWriter.write(stringBoard);

@@ -6,19 +6,19 @@ public class ClojureTTTGameRunnerTest {
     @Test
     public void testRunsThroughOneCycle() throws IOException {
         ClojureTTTGameRunner runner = new ClojureTTTGameRunner();
-        ClojureBoardHolder holder = new ClojureBoardHolder();
+        ClojureTTTBoardHolder holder = new ClojureTTTBoardHolder();
         holder.resetBoard();
         String move = "9";
-        String board = "x234o6789";
+        String boardAfterTwoMoves = "x234o6789";
         MyFileWriter myFileWriter = new MyFileWriter("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/serverData/clojureTTTboard.txt");
-        myFileWriter.write(board);
+        myFileWriter.write(boardAfterTwoMoves);
 
         runner.runCycle(move);
 
         MyFileReader myFileReader = new MyFileReader("serverData/clojureTTTboard.txt");
-        String boardString = new String(myFileReader.readFileContents(), "UTF-8");
+        String boardAfterFourMoves = new String(myFileReader.readFileContents(), "UTF-8");
 
-        assert("xo34o678x".equals(boardString));
+        assert("xo34o678x".equals(boardAfterFourMoves));
     }
 
 }

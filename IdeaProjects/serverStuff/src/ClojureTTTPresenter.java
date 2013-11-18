@@ -14,9 +14,9 @@ public class ClojureTTTPresenter {
                                         wrapInTableTags(
                                                 wrapEachRowInHtml(
                                                         convertSquaresToHtml(board))))));
-        ClojureInvoker game = new ClojureInvoker();
+        ClojureTTTInvoker game = new ClojureTTTInvoker();
         if (game.gameOver(board).equals(true))
-            boardAsHtml = addMessage(boardAsHtml, game.getWinningPiece(board));
+            boardAsHtml = gameOverMessage(boardAsHtml, game.getWinningPiece(board));
         return boardAsHtml;
     }
 
@@ -80,7 +80,7 @@ public class ClojureTTTPresenter {
                 "</form>";
     }
 
-    public String addMessage(String page, Object winner) {
+    public String gameOverMessage(String page, Object winner) {
         if (winner == null) {
             return "<p>Tie Game</p>" + page;
         }  else if (winner == "o") {

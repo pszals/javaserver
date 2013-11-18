@@ -172,8 +172,8 @@ public class ClojureTTTPresenterTest {
 
     @Test
     public void testDisplaysWinnerOrTieMessage() {
-        assertEquals("<p>Player O Wins</p>hello", clojureTttPresenter.addMessage(page, "o"));
-        assertEquals("<p>Player X Wins</p>hello", clojureTttPresenter.addMessage(page, "x"));
-        assertEquals("<p>Tie Game</p>hello", clojureTttPresenter.addMessage(page, null));
+        assertEquals("<p>Player O Wins</p>hello", clojureTttPresenter.gameOverMessage(page, "o"));
+        assertEquals("<p>Player X Wins</p>hello", clojureTttPresenter.gameOverMessage(page, "x"));
+        assertEquals("<p>Tie Game</p>hello", clojureTttPresenter.gameOverMessage(page, null));
     }
 }

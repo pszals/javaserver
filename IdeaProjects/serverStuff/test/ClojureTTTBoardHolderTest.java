@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import static junit.framework.Assert.assertEquals;
 
 
-public class ClojureBoardHolderTest {
-    private ClojureBoardHolder boardHolder = new ClojureBoardHolder();
+public class ClojureTTTBoardHolderTest {
+    private ClojureTTTBoardHolder boardHolder = new ClojureTTTBoardHolder();
 
     @Test
     public void testWritesBoardStateToFile() throws IOException {
@@ -34,7 +34,7 @@ public class ClojureBoardHolderTest {
 
     @Test
     public void testResetsGameState() throws IOException {
-        ClojureBoardHolder holder = new ClojureBoardHolder();
+        ClojureTTTBoardHolder holder = new ClojureTTTBoardHolder();
         String blankBoard = "123456789";
         String fullBoard = "xoxoxooox";
         MyFileWriter myFileWriter = new MyFileWriter("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/serverData/clojureTTTboard.txt");

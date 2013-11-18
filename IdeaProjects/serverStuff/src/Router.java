@@ -45,8 +45,8 @@ public class Router {
         } else if (method.equals("GET") && route.equals("/ttt")) {
 
             ArrayList board;
-            ClojureBoardParser parser = new ClojureBoardParser();
-            ClojureBoardHolder holder = new ClojureBoardHolder();
+            ClojureTTTBoardParser parser = new ClojureTTTBoardParser();
+            ClojureTTTBoardHolder holder = new ClojureTTTBoardHolder();
             String stringBoard = holder.readBoardStateFile();
             board = parser.convertStringToBoardArray(stringBoard);
             response = responseHolder.tttHome(board);
@@ -60,7 +60,7 @@ public class Router {
             response = responseHolder.keepPlayingResponse();
 
         } else if (method.equals("POST") && route.equals("/reset") ) {
-            ClojureBoardHolder holder = new ClojureBoardHolder();
+            ClojureTTTBoardHolder holder = new ClojureTTTBoardHolder();
             holder.resetBoard();
 
             response = responseHolder.keepPlayingResponse();
