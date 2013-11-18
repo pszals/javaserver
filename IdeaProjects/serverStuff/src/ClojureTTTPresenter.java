@@ -6,18 +6,32 @@ import java.util.List;
 
 public class ClojureTTTPresenter {
 
+    public String displayHtmlBoard(ArrayList board) throws IOException {
+        String boardAsHtml =
+                wrapInHtmlHead(
+                        wrapInResetBoard(
+                                wrapInPlayGameForm(
+                                        wrapInTableTags(
+                                                wrapEachRowInHtml(
+                                                        convertSquaresToHtml(board))))));
+        ClojureInvoker game = new ClojureInvoker();
+        if (game.gameOver(board).equals(true))
+            boardAsHtml = addMessage(boardAsHtml, game.getWinningPiece(board));
+        return boardAsHtml;
+    }
+
      public ArrayList convertSquaresToHtml(ArrayList board) {
-        ArrayList htmlBoardWithIndex = new ArrayList();
+        ArrayList htmlBoard = new ArrayList();
         int numberOfSquares = board.size();
-        for (int index = 0; index < numberOfSquares; index += 1) {
-            htmlBoardWithIndex.add(
+        for (int index = 0; index < numberOfSquares; index++) {
+            htmlBoard.add(
                     "<td id=" + index + ">" +
                             "<form action='/play_game' method='POST'>" +
-                            "<input type='submit' name='square' value=" + board.get(index) +">" +
+                            "<input type='submit' name='square' value=" + board.get(index) + ">" +
                             "</form>" +
                             "</td>");
         }
-        return htmlBoardWithIndex;
+        return htmlBoard;
     }
 
     public String wrapEachRowInHtml(List<Object> squares) {
@@ -56,20 +70,6 @@ public class ClojureTTTPresenter {
         return "<tr>" + page + "</tr>";
     }
 
-    public String displayHtmlBoard(ArrayList board) throws IOException {
-        String boardAsHtml =
-            wrapInHtmlHead(
-                    wrapInResetBoard(
-                            wrapInPlayGameForm(
-                                    wrapInTableTags(
-                                            wrapEachRowInHtml(
-                                                    convertSquaresToHtml(board))))));
-        ClojureInvoker game = new ClojureInvoker();
-        if (game.gameOver(board).equals(true))
-            boardAsHtml = addMessage(boardAsHtml);
-        return boardAsHtml;
-    }
-
     public String wrapInTableTags(String page) {
         return "<table id=\"tictac\">" + page + "</table>";
     }
@@ -80,7 +80,13 @@ public class ClojureTTTPresenter {
                 "</form>";
     }
 
-    public String addMessage(String page) {
-        return "<p>GAME OVER</p>" + page;
+    public String addMessage(String page, Object winner) {
+        if (winner == null) {
+            return "<p>Tie Game</p>" + page;
+        }  else if (winner == "o") {
+            return "<p>Player O Wins</p>" + page;
+        } else {
+            return "<p>Player X Wins</p>" + page;
+        }
     }
 }

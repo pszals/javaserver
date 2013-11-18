@@ -48,11 +48,6 @@ public class ClojureTTTPresenterTest {
     }
 
     @Test
-    public void testAddsGameStatusMessage() {
-        assertEquals("<p>GAME OVER</p>hello", clojureTttPresenter.addMessage(page));
-    }
-
-    @Test
     public void testWrapsEACHRowInTableRow() {
         ArrayList rows = new ArrayList();
         rows.add(1);
@@ -107,7 +102,6 @@ public class ClojureTTTPresenterTest {
         board.add(7);
         board.add(8);
         board.add(9);
-
         String boardAsHtml = "" +
                 "<html>" +
                 "<head>" +
@@ -174,5 +168,12 @@ public class ClojureTTTPresenterTest {
                 "</html>";
 
         assertEquals(boardAsHtml, clojureTttPresenter.displayHtmlBoard(board));
+    }
+
+    @Test
+    public void testDisplaysWinnerOrTieMessage() {
+        assertEquals("<p>Player O Wins</p>hello", clojureTttPresenter.addMessage(page, "o"));
+        assertEquals("<p>Player X Wins</p>hello", clojureTttPresenter.addMessage(page, "x"));
+        assertEquals("<p>Tie Game</p>hello", clojureTttPresenter.addMessage(page, null));
     }
 }
