@@ -9,6 +9,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class ClojureTTTInvokerTest {
+
     @Test
     public void testEvaluatesBoardStatus() throws IOException {
         ClojureTTTInvoker clojureTTTInvoker = new ClojureTTTInvoker();

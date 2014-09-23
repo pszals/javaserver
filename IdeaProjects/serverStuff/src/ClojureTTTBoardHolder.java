@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class ClojureTTTBoardHolder {
     public void recordBoardState(ArrayList board) throws IOException {
-        MyFileWriter myFileWriter = new MyFileWriter("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/serverData/clojureTTTboard.txt");
+        MyFileWriter myFileWriter = new MyFileWriter(System.getProperty("user.dir") + "/serverData/clojureTTTboard.txt");
         ClojureTTTBoardParser boardParser = new ClojureTTTBoardParser();
         String stringBoard = boardParser.convertBoardToString(board);
 
@@ -18,7 +18,7 @@ public class ClojureTTTBoardHolder {
 
     public void resetBoard() throws IOException {
         String blankBoard = "123456789";
-        MyFileWriter myFileWriter = new MyFileWriter("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/serverData/clojureTTTboard.txt");
+        MyFileWriter myFileWriter = new MyFileWriter(System.getProperty("user.dir") + "/serverData/clojureTTTboard.txt");
         myFileWriter.write(blankBoard);
     }
 }

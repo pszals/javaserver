@@ -70,7 +70,7 @@ public class ResponseHolder {
 
     byte[] modifiedFormResponse(byte[] body) throws IOException {
         byte[] response;
-        MyFileWriter myFileWriter = new MyFileWriter("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/serverData/form");
+        MyFileWriter myFileWriter = new MyFileWriter(System.getProperty("user.dir") + "/serverData/form");
         myFileWriter.write(new String(body));
         response = "HTTP/1.1 200 OK\r\n".getBytes();
         return response;

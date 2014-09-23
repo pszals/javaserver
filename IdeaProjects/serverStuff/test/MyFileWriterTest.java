@@ -7,7 +7,7 @@ import static org.junit.Assert.assertArrayEquals;
 public class MyFileWriterTest {
     @Test
     public void testWritesToFile() throws IOException {
-        String pathWithFileName = "/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/serverData/testfile.txt";
+        String pathWithFileName = System.getProperty("user.dir") + "/serverData/testfile.txt";
         String testData = "test data";
         MyFileWriter myFileWriter = new MyFileWriter(pathWithFileName);
         myFileWriter.write(testData);

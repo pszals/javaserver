@@ -37,7 +37,7 @@ public class ClojureTTTBoardHolderTest {
         ClojureTTTBoardHolder holder = new ClojureTTTBoardHolder();
         String blankBoard = "123456789";
         String fullBoard = "xoxoxooox";
-        MyFileWriter myFileWriter = new MyFileWriter("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/serverData/clojureTTTboard.txt");
+        MyFileWriter myFileWriter = new MyFileWriter(System.getProperty("user.dir") + "/serverData/clojureTTTboard.txt");
         myFileWriter.write(fullBoard);
         MyFileReader myFileReader = new MyFileReader("serverData/clojureTTTboard.txt");
         holder.resetBoard();

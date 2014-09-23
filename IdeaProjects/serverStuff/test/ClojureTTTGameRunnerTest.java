@@ -10,7 +10,7 @@ public class ClojureTTTGameRunnerTest {
         holder.resetBoard();
         String move = "9";
         String boardAfterTwoMoves = "x234o6789";
-        MyFileWriter myFileWriter = new MyFileWriter("/Users/pszalwinski/GoogleDrive/programming/Projects/JavaServer/serverData/clojureTTTboard.txt");
+        MyFileWriter myFileWriter = new MyFileWriter(System.getProperty("user.dir") + "/serverData/clojureTTTboard.txt");
         myFileWriter.write(boardAfterTwoMoves);
 
         runner.runCycle(move);
