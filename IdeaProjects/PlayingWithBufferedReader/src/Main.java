@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.StringReader;
 
 /**
@@ -15,7 +14,7 @@ public class Main {
         String text = "this is some text\r\n";
         BufferedReader br = new BufferedReader(new StringReader(text));
         br.readLine();
-        br.
+
 
     }
 }
